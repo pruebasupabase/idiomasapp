@@ -1,13 +1,13 @@
 // Tutor de IA: conversación, corrección de textos y explicaciones.
 // Llama a la edge function "tutor" de Supabase, que tiene las claves de Groq/Gemini (nunca van en el navegador).
 
-import { h } from '../util.js';
+import { h, toast } from '../util.js';
 import { courseList, getCourse, lessonsOf } from '../content/index.js';
 import { getSettings } from '../store.js';
 import { isLocalMode, getClient } from '../auth.js';
 import { TUTOR_FUNCTION } from '../config.js';
 import { speakButton, icon, emptyState } from '../ui.js';
-import { canListen, listen, stopSpeaking } from '../speech.js';
+import { canListen, listen, speak, stopSpeaking, stopListening, unlockSpeech } from '../speech.js';
 import { isDone, nextLesson } from '../progress.js';
 
 const MODES = [
@@ -82,6 +82,8 @@ export default function tutorView(root, courseParam) {
   let scenario = 'free';
   let messages = [];
   let busy = false;
+  let handsFree = false;
+  let tapResolve = null;
 
   const head = h('div', { class: 'tutor-head' });
   const thread = h('ol', { class: 'thread', 'aria-live': 'polite' });
@@ -90,13 +92,18 @@ export default function tutorView(root, courseParam) {
   const micBtn = canListen()
     ? h('button', { class: 'btn ghost', type: 'button', 'aria-label': 'Dictar con la voz' }, icon('mic'))
     : null;
-  const composer = h('form', { class: 'composer' }, input, h('div', { class: 'composer-actions' }, micBtn, sendBtn));
-  const page = h('div', { class: 'tutor' }, head, thread, composer);
+  const handsBtn = canListen()
+    ? h('button', { class: 'btn', type: 'button', onclick: () => startHandsFree() }, icon('mic'), h('span', {}, 'Manos libres'))
+    : null;
+  const composer = h('form', { class: 'composer' }, input, h('div', { class: 'composer-actions' }, handsBtn, micBtn, sendBtn));
+  const handsPanel = h('div', { class: 'hf', hidden: true });
+  const page = h('div', { class: 'tutor' }, head, handsPanel, thread, composer);
   root.append(h('header', { class: 'page-head' }, h('h1', {}, 'Tutor')), page);
 
   const course = () => getCourse(courseId);
 
   function drawHead() {
+    if (handsBtn) handsBtn.hidden = mode !== 'chat';
     root.dataset.lang = course().lang;
     root.dataset.course = courseId;
     const modeInfo = MODES.find((m) => m.id === mode);
@@ -164,6 +171,7 @@ export default function tutorView(root, courseParam) {
   }
 
   function reset() {
+    stopHandsFree();
     messages = [];
     busy = false;
     drawHead();
@@ -181,8 +189,10 @@ export default function tutorView(root, courseParam) {
     reset();
   }
 
+  // Devuelve la respuesta del tutor (o null si falló) para poder leerla en voz alta en el modo manos libres.
   async function ask(text) {
-    if (busy) return;
+    if (busy) return null;
+    let reply = null;
     if (text) messages.push({ role: 'user', content: text });
     busy = true;
     sendBtn.disabled = true;
@@ -202,6 +212,7 @@ export default function tutorView(root, courseParam) {
       const { data, error } = await getClient().functions.invoke(TUTOR_FUNCTION, { body });
       if (error) throw Object.assign(new Error(await errorMessage(error)), { handled: true });
       messages.push({ role: 'assistant', content: data.reply, reply: data.reply, notes: data.notes || '' });
+      reply = data.reply;
     } catch (err) {
       const msg = err.handled ? err.message : await errorMessage(err);
       messages.push({ role: 'assistant', error: msg, content: '' });
@@ -209,6 +220,110 @@ export default function tutorView(root, courseParam) {
       busy = false;
       sendBtn.disabled = false;
       drawThread();
+    }
+    return reply;
+  }
+
+  // ---------- manos libres: hablás, el tutor responde en voz alta y vuelve a escuchar ----------
+
+  const HF_TEXT = {
+    listening: 'Te escucho. Hablá.',
+    thinking: 'Pensando…',
+    speaking: 'El tutor está hablando.',
+    tap: 'Tocá el micrófono y hablá.',
+  };
+
+  function setHandsState(state) {
+    const orb = h(
+      'button',
+      {
+        class: `orb ${state}`,
+        type: 'button',
+        'aria-label': state === 'tap' ? 'Hablar' : state === 'speaking' ? 'Saltear lo que dice el tutor' : HF_TEXT[state],
+        onclick: () => {
+          if (state === 'tap') tapResolve?.();
+          else if (state === 'speaking') stopSpeaking();
+        },
+      },
+      icon('mic'),
+    );
+    handsPanel.replaceChildren(
+      orb,
+      h('p', { class: 'hf-status', 'aria-live': 'polite' }, HF_TEXT[state]),
+      h('button', { class: 'btn ghost', type: 'button', onclick: stopHandsFree }, 'Terminar'),
+    );
+  }
+
+  function stopHandsFree() {
+    if (!handsFree) return;
+    handsFree = false;
+    stopSpeaking();
+    stopListening();
+    tapResolve?.();
+    tapResolve = null;
+    handsPanel.hidden = true;
+    composer.hidden = false;
+  }
+
+  async function startHandsFree() {
+    if (handsFree || busy) return;
+    handsFree = true;
+    unlockSpeech();
+    composer.hidden = true;
+    handsPanel.hidden = false;
+    const lang = course().lang;
+    let manual = false; // en algunos iPhone el micrófono hay que tocarlo en cada turno
+    let silent = 0;
+
+    try {
+      if (!messages.length) {
+        setHandsState('thinking');
+        const first = await ask(null);
+        if (!first) return;
+        if (handsFree) {
+          setHandsState('speaking');
+          await speak(first, lang);
+        }
+      }
+
+      while (handsFree) {
+        if (manual) {
+          setHandsState('tap');
+          await new Promise((resolve) => (tapResolve = resolve));
+          if (!handsFree) break;
+        }
+        setHandsState('listening');
+        let said = '';
+        try {
+          said = (await listen(lang, { timeout: 15000 })).best;
+        } catch (err) {
+          if (!handsFree) break;
+          if (err.message === 'not-allowed' || err.message === 'service-not-allowed') {
+            toast('Dale permiso al micrófono para usar el modo manos libres.');
+            break;
+          }
+          if (err.message !== 'no-speech' && err.message !== 'aborted') {
+            manual = true;
+            continue;
+          }
+        }
+        if (!handsFree) break;
+        if (!said) {
+          if (++silent >= 3) {
+            toast('No te escuché. Terminé el modo manos libres.');
+            break;
+          }
+          continue;
+        }
+        silent = 0;
+        setHandsState('thinking');
+        const reply = await ask(said);
+        if (!handsFree || !reply) break;
+        setHandsState('speaking');
+        await speak(reply, lang);
+      }
+    } finally {
+      stopHandsFree();
     }
   }
 
@@ -244,6 +359,7 @@ export default function tutorView(root, courseParam) {
   drawThread();
 
   return () => {
+    stopHandsFree();
     stopSpeaking();
     delete root.dataset.lang;
     delete root.dataset.course;

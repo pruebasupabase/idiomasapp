@@ -2,6 +2,10 @@
 // Para sumar una lección: crear el archivo, importarlo acá y agregarlo a su unidad.
 
 import { slug } from '../util.js';
+import { expandTopic } from '../builder.js';
+
+import ruT01 from './ru/t01-saludos.js';
+import enT01 from './en/t01-trabajo.js';
 
 import ru01 from './ru/01-sonidos.js';
 import ru02 from './ru/02-saludos.js';
@@ -34,6 +38,18 @@ import en13 from './en/13-linking-words.js';
 import en14 from './en/14-phrasal-verbs.js';
 import en15 from './en/15-collocations.js';
 
+// Un tema se convierte en una unidad con varias lecciones cortas (palabras, frases y repaso).
+function topicUnit(topic, lang) {
+  return {
+    id: `${topic.id}-unit`,
+    title: topic.title,
+    blurb: topic.goal,
+    emoji: topic.emoji,
+    isTopic: true,
+    lessons: expandTopic(topic, lang),
+  };
+}
+
 export const COURSES = {
   ru: {
     id: 'ru',
@@ -50,10 +66,11 @@ export const COURSES = {
       },
     ],
     units: [
+      topicUnit(ruT01, 'ru'),
       {
         id: 'ru-u1',
-        title: 'Primeros pasos',
-        blurb: 'Sonidos, saludos y la estructura básica de la oración.',
+        title: 'Gramática: primeros pasos',
+        blurb: 'Sonidos, saludos y la estructura básica de la oración, con la teoría completa.',
         lessons: [ru01, ru02, ru03, ru04, ru05, ru06],
       },
       {
@@ -79,6 +96,7 @@ export const COURSES = {
     blurb: 'Tiempos, condicionales, pasiva, estilo indirecto y vocabulario para sonar natural.',
     tools: [],
     units: [
+      topicUnit(enT01, 'en'),
       {
         id: 'en-u1',
         title: 'Pronunciación y tiempos verbales',
@@ -131,6 +149,11 @@ export function findLesson(courseId, lessonId) {
 // Las palabras de una lección que pasan al repaso espaciado.
 export function cardsOfLesson(lesson) {
   return (lesson.vocab || []).map((v) => ({ ...v, id: `${lesson.id}/${slug(v.t)}`, lessonId: lesson.id }));
+}
+
+// Las lecciones de teoría completa (las del formato viejo) y las sesiones de los temas se tratan distinto.
+export function isTopicLesson(lesson) {
+  return lesson?.kind === 'topic';
 }
 
 const indexCache = new Map();

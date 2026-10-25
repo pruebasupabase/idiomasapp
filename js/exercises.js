@@ -1,12 +1,14 @@
 // Motor de ejercicios. Cada tipo sabe dibujarse y corregirse; el motor se ocupa del
 // flujo (comprobar, mostrar la corrección, repetir lo que salió mal).
 //
-// Tipos: mc, fill, tr, order, listen, match, speak.
+// Tipos que se corrigen: mc, fill, tr, order, listen, match, speak.
+// Tipos que solo muestran algo (no puntúan): intro (palabras nuevas) y tip (un dato de gramática).
 
 import { h, fmt, shuffle, normalize, similarity } from './util.js';
 import { speak, canListen, listen, stopSpeaking } from './speech.js';
 import { listenButtons, speakButton, icon } from './ui.js';
 import { russianKeyboard } from './keyboard.js';
+import * as sfx from './sfx.js';
 
 const LANG_NAME = { ru: 'ruso', en: 'inglés' };
 const PRAISE = ['Correcto.', 'Muy bien.', 'Eso es.', 'Bien.'];
@@ -27,8 +29,17 @@ function grade(given, answers, { loose = false } = {}) {
 function prompt(item, ctx, instruction) {
   const parts = [];
   if (instruction) parts.push(h('p', { class: 'ex-instruction' }, instruction));
+  if (item.big) parts.push(h('div', { class: 'ex-big', 'aria-hidden': 'true' }, item.big));
   if (item.q) parts.push(h('p', { class: 'ex-q', html: fmt(item.q) }));
-  if (item.audio) parts.push(listenButtons(item.audio, ctx.lang));
+  if (item.audio) {
+    parts.push(listenButtons(item.audio, ctx.lang));
+    // Algunas preguntas arrancan solas con el audio (escuchá y elegí).
+    if (item.autoplay) {
+      setTimeout(() => {
+        if (parts[0]?.isConnected) speak(item.audio, ctx.lang);
+      }, 350);
+    }
+  }
   return h('div', { class: 'ex-prompt' }, parts);
 }
 
@@ -57,22 +68,25 @@ const RENDERERS = {
   mc(item, ctx) {
     const options = shuffle(item.options.map((text, i) => ({ text, i })));
     let chosen = null;
+    // visual: las opciones son dibujos (emoji) en una grilla de dos columnas.
     const buttons = options.map((opt, n) =>
       h(
         'button',
         {
-          class: 'opt',
+          class: item.visual ? 'opt visual' : 'opt',
           type: 'button',
           role: 'radio',
           'aria-checked': 'false',
+          'aria-label': item.visual && item.labels ? item.labels[opt.i] : null,
           onclick: () => select(n),
         },
-        h('span', { class: 'opt-key', 'aria-hidden': 'true' }, String(n + 1)),
-        h('span', { class: 'opt-text' }, opt.text),
+        item.visual ? null : h('span', { class: 'opt-key', 'aria-hidden': 'true' }, String(n + 1)),
+        h('span', { class: item.visual ? 'opt-emoji' : 'opt-text', lang: item.optLang || null }, opt.text),
       ),
     );
 
     function select(n) {
+      if (chosen !== n) sfx.play('tap');
       chosen = n;
       buttons.forEach((b, k) => {
         b.classList.toggle('picked', k === n);
@@ -82,11 +96,18 @@ const RENDERERS = {
     }
 
     return {
-      node: h('div', {}, prompt(item, ctx, item.instruction), h('div', { class: 'opts', role: 'radiogroup' }, buttons)),
+      node: h('div', {}, prompt(item, ctx, item.instruction), h('div', { class: `opts${item.visual ? ' visual' : ''}`, role: 'radiogroup' }, buttons)),
       ready: () => chosen !== null,
       check() {
         const ok = options[chosen].i === item.answer;
-        return { ok, given: options[chosen].text, expected: item.options[item.answer], say: item.sayAnswer ? item.options[item.answer] : null };
+        // En las preguntas con dibujos el feedback dice la palabra, no el emoji.
+        const word = item.say || (item.sayAnswer ? item.options[item.answer] : null);
+        return {
+          ok,
+          given: item.visual ? '' : options[chosen].text,
+          expected: item.visual ? item.say || '' : item.options[item.answer],
+          say: word,
+        };
       },
       lock() {
         buttons.forEach((b, k) => {
@@ -178,7 +199,9 @@ const RENDERERS = {
           {
             class: 'chip',
             type: 'button',
+            lang: ctx.lang,
             onclick: () => {
+              sfx.play('tap');
               if (picked.includes(chip)) picked.splice(picked.indexOf(chip), 1);
               else picked.push(chip);
               redraw();
@@ -238,7 +261,7 @@ const RENDERERS = {
   // Emparejar: { pairs: [[idioma, español], ...], instruction? }
   match(item, ctx) {
     const pairs = item.pairs;
-    const left = shuffle(pairs.map((p, i) => ({ text: p[0], i })));
+    const left = shuffle(pairs.map((p, i) => ({ text: p[0], e: p[2] || '', i })));
     const right = shuffle(pairs.map((p, i) => ({ text: p[1], i })));
     const selected = { l: null, r: null };
     let mistakes = 0;
@@ -258,6 +281,7 @@ const RENDERERS = {
       const r = selected.r;
       selected.l = selected.r = null;
       if (left[l].i === right[r].i) {
+        sfx.play('tap');
         for (const b of [lbtn[l], rbtn[r]]) {
           b.classList.remove('picked');
           b.classList.add('right');
@@ -275,6 +299,7 @@ const RENDERERS = {
         }
       } else {
         mistakes++;
+        sfx.play('wrong');
         for (const b of [lbtn[l], rbtn[r]]) {
           b.classList.add('wrong');
           setTimeout(() => b.classList.remove('wrong'), 450);
@@ -286,12 +311,17 @@ const RENDERERS = {
     function pick(side, k) {
       const other = side === 'l' ? 'r' : 'l';
       selected[side] = selected[side] === k ? null : k;
+      if (selected[side] !== null && !(selected[other] !== null)) sfx.play('tap');
       if (side === 'l' && selected.l !== null && item.noSpeak !== true) speak(left[k].text, ctx.lang);
       paint();
       if (selected[other] !== null && selected[side] !== null) evaluate();
     }
 
-    left.forEach((o, k) => lbtn.push(h('button', { class: 'pair', type: 'button', onclick: () => pick('l', k) }, o.text)));
+    left.forEach((o, k) =>
+      lbtn.push(
+        h('button', { class: 'pair', type: 'button', lang: ctx.lang, onclick: () => pick('l', k) }, o.e ? h('span', { class: 'pair-e', 'aria-hidden': 'true' }, o.e) : null, o.text),
+      ),
+    );
     right.forEach((o, k) => rbtn.push(h('button', { class: 'pair', type: 'button', onclick: () => pick('r', k) }, o.text)));
 
     return {
@@ -367,6 +397,64 @@ const RENDERERS = {
       auto,
     };
   },
+
+  // Palabras o frases nuevas: { words: [{ t, es, e?, ex? }], title? }. No puntúa.
+  // Hay que tocar cada una para escucharla antes de seguir.
+  intro(item, ctx) {
+    const heard = new Set();
+    const tiles = item.words.map((w, n) => {
+      const tile = h(
+        'button',
+        { class: `intro-tile${item.phrases ? ' phrase' : ''}`, type: 'button', style: `--n:${n}` },
+        w.e ? h('span', { class: 'intro-e', 'aria-hidden': 'true' }, w.e) : null,
+        h('span', { class: 'intro-t', lang: ctx.lang }, w.t),
+        h('span', { class: 'intro-es' }, w.es),
+      );
+      tile.addEventListener('click', () => {
+        sfx.play('tap');
+        speak(w.t, ctx.lang);
+        tile.classList.remove('bump');
+        void tile.offsetWidth; // reinicia la animación si se toca dos veces
+        tile.classList.add('bump', 'heard');
+        heard.add(n);
+        ctx.changed();
+      });
+      return tile;
+    });
+
+    setTimeout(() => {
+      if (tiles[0]?.isConnected && item.autoplay !== false) speak(item.words[0].t, ctx.lang);
+    }, 450);
+
+    return {
+      node: h(
+        'div',
+        {},
+        h('p', { class: 'ex-instruction' }, item.title || 'Palabras nuevas'),
+        h('p', { class: 'ex-hint' }, 'Tocá cada una para escucharla.'),
+        h('div', { class: `intro-grid${item.phrases ? ' phrases' : ''}` }, tiles),
+      ),
+      buttonLabel: 'Seguir',
+      ready: () => heard.size >= item.words.length,
+      check: () => ({ ok: true, skipped: true }),
+    };
+  },
+
+  // Un dato de gramática cortito: { e?, title, html }. No puntúa.
+  tip(item, ctx) {
+    const body = h('div', { class: 'tip-body prose', html: item.html });
+    for (const el of body.querySelectorAll('.say')) {
+      el.tabIndex = 0;
+      el.setAttribute('role', 'button');
+      el.setAttribute('title', 'Tocá para escuchar');
+    }
+    return {
+      node: h('div', { class: 'tip' }, h('div', { class: 'tip-e', 'aria-hidden': 'true' }, item.e || '💡'), h('h2', { class: 'tip-title' }, item.title), body),
+      buttonLabel: 'Entendido',
+      ready: () => true,
+      check: () => ({ ok: true, skipped: true }),
+    };
+  },
 };
 
 // ---------- flujo ----------
@@ -409,7 +497,7 @@ function playItem(root, item, ctx) {
     const body = h('div', { class: 'ex-body' });
     const feedback = h('div', { class: 'ex-feedback', 'aria-live': 'polite' });
     const button = h('button', { class: 'btn primary wide', type: 'button', disabled: true }, 'Comprobar');
-    const frame = h('div', { class: 'ex' }, bar, tag, body, feedback, h('div', { class: 'ex-footer' }, button));
+    const frame = h('div', { class: 'ex', dataset: { type: item.type, state: 'answer' } }, bar, tag, body, h('div', { class: 'ex-sheet' }, feedback, h('div', { class: 'ex-footer' }, button)));
     root.replaceChildren(frame);
 
     let phase = 'answer';
@@ -425,6 +513,7 @@ function playItem(root, item, ctx) {
     });
     body.append(renderer.node);
     button.disabled = !renderer.ready?.();
+    if (renderer.buttonLabel) button.textContent = renderer.buttonLabel;
 
     function show(res) {
       if (phase === 'checked') return;
@@ -432,8 +521,11 @@ function playItem(root, item, ctx) {
       result = res;
       if (res.skipped) return finishItem();
       renderer.lock?.(res);
+      sfx.play(res.ok ? 'right' : 'wrong');
+      frame.dataset.state = res.ok ? 'ok' : 'bad';
       feedback.className = `ex-feedback ${res.ok ? 'ok' : 'bad'}`;
       feedback.replaceChildren(feedbackNode(item, res, ctx.lang));
+      ctx.onAnswer?.(res, { item, sheet: feedback, frame });
       button.hidden = false;
       button.disabled = false;
       button.textContent = 'Continuar';
@@ -479,16 +571,24 @@ function playItem(root, item, ctx) {
 }
 
 // Corre toda la serie. Lo que sale mal se repite una vez al final.
-export async function runExercises(root, items, { lang, onItem }) {
+// onItem(ok): una vez por pregunta (la primera vez). onAnswer(res, info): cada vez que se corrige algo,
+// repeticiones incluidas. shouldStop(): si devuelve true se corta la serie (por ejemplo, sin vidas).
+export async function runExercises(root, items, { lang, onItem, onAnswer, shouldStop }) {
   const queue = items.map((item) => ({ item, retry: false }));
   const total = items.length;
   const first = [];
   let counted = 0;
+  let stopped = false;
   const started = Date.now();
 
   while (queue.length) {
     const { item, retry } = queue.shift();
-    const res = await playItem(root, item, { lang, retry, pct: Math.round((counted / total) * 100) });
+    const res = await playItem(root, item, { lang, retry, onAnswer, pct: Math.round((counted / total) * 100) });
+    if (shouldStop?.()) {
+      if (!retry && !res.skipped) first.push({ item, ok: res.ok, given: res.given, expected: res.expected });
+      stopped = true;
+      break;
+    }
     if (res.skipped) {
       if (!retry) counted++;
       continue;
@@ -508,6 +608,7 @@ export async function runExercises(root, items, { lang, onItem }) {
     correct,
     score: first.length ? Math.round((correct / first.length) * 100) : 100,
     results: first,
+    stopped,
     secs: Math.round((Date.now() - started) / 1000),
   };
 }

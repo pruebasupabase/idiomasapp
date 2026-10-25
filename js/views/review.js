@@ -154,6 +154,7 @@ function session(root, courseId, extraNew = 0) {
     return h(
       'div',
       { class: 'card-answer' },
+      info.e ? h('p', { class: 'card-e', 'aria-hidden': 'true' }, info.e) : null,
       ok === false ? h('p', { class: 'pen big', lang }, info.t) : h('p', { class: 'card-term', lang }, info.t),
       h('p', { class: 'card-es' }, info.es),
       info.ex ? h('p', { class: 'card-ex' }, h('span', { lang }, info.ex), info.exEs ? h('span', { class: 'v-exes' }, ` ${info.exEs}`) : null) : null,
@@ -167,6 +168,7 @@ function session(root, courseId, extraNew = 0) {
     const reveal = h('button', { class: 'btn primary wide', type: 'button' }, 'Mostrar respuesta');
     frame.append(
       h('p', { class: 'card-hint muted small' }, 'Ya la viste. ¿Qué significa?'),
+      info.e ? h('p', { class: 'card-e', 'aria-hidden': 'true' }, info.e) : null,
       h('p', { class: 'card-term', lang }, info.t),
       speakButton(info.t, lang, { label: 'Escuchar' }),
       reveal,

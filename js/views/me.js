@@ -88,8 +88,17 @@ export default function meView(root) {
   );
   const freeBox = h('input', { type: 'checkbox', checked: settings.freeMode });
   freeBox.addEventListener('change', () => updateSettings({ freeMode: freeBox.checked }));
+  const modeSel = h(
+    'select',
+    { class: 'field', onchange: (e) => updateSettings({ mode: e.target.value }) },
+    [['relax', 'Tranquilo: sin vidas'], ['duo', 'Desafío: 5 vidas por lección']].map(([v, l]) => h('option', { value: v, selected: v === (settings.mode || 'relax') }, l)),
+  );
+  const soundBox = h('input', { type: 'checkbox', checked: settings.sound !== false });
+  soundBox.addEventListener('change', () => updateSettings({ sound: soundBox.checked }));
   const study = section(
     'Estudio',
+    row('Modo de las lecciones', modeSel, 'En desafío, cada error te saca una vida; sin vidas hay que repetir la lección.'),
+    h('label', { class: 'check' }, soundBox, h('span', {}, 'Sonidos de acierto y error')),
     row('Cupo diario', perDay, 'Las tarjetas nuevas que se suman cada día al repaso.'),
     h('label', { class: 'check' }, freeBox, h('span', {}, 'Abrir todas las lecciones, sin orden obligatorio')),
   );

@@ -45,6 +45,14 @@ export function stopSpeaking() {
   playing = null;
 }
 
+// En iPhone la voz solo se puede arrancar después de un toque: se llama dentro de un clic para dejarla lista.
+export function unlockSpeech() {
+  if (!canSpeak()) return;
+  const u = new SpeechSynthesisUtterance(' ');
+  u.volume = 0;
+  window.speechSynthesis.speak(u);
+}
+
 // Lee un texto en voz alta. Devuelve una promesa que se resuelve cuando termina.
 export function speak(text, lang, { rate } = {}) {
   return new Promise((resolve) => {
@@ -76,12 +84,25 @@ function recognitionClass() {
 
 export const canListen = () => !!recognitionClass();
 
+let activeRec = null;
+
+// Corta la escucha que esté en curso (por ejemplo, al salir del modo manos libres).
+export function stopListening() {
+  try {
+    activeRec?.abort();
+  } catch {
+    /* ya estaba parado */
+  }
+  activeRec = null;
+}
+
 // Escucha una frase. Devuelve { best, alts } o lanza un error con el código del navegador.
 export function listen(lang, { timeout = 9000 } = {}) {
   return new Promise((resolve, reject) => {
     const Recognition = recognitionClass();
     if (!Recognition) return reject(new Error('unsupported'));
     const rec = new Recognition();
+    activeRec = rec;
     rec.lang = langCode(lang);
     rec.interimResults = false;
     rec.maxAlternatives = 3;
@@ -92,6 +113,7 @@ export function listen(lang, { timeout = 9000 } = {}) {
       if (finished) return;
       finished = true;
       clearTimeout(timer);
+      if (activeRec === rec) activeRec = null;
       fn();
     };
 

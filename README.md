@@ -81,6 +81,21 @@ Tipos de ejercicio:
 
 En ruso, el acento tónico se marca con `´` sobre la vocal (`мо́ре`) en todo el vocabulario. Al corregir se ignoran acentos, mayúsculas, puntuación y la diferencia entre `ё` y `е`. Las respuestas en español toleran tildes. No se toleran errores de tipeo, porque en ruso una letra cambia el caso.
 
+## Temas: palabras, audio y puntos
+
+Además de las lecciones de gramática, cada curso empieza con **temas** (por ejemplo `js/content/ru/t01-saludos.js`).
+Un tema se escribe una sola vez (palabras con dibujo, frases y datos de gramática) y `js/builder.js` arma solo las
+sesiones cortas: palabras nuevas con audio → ejercicios de escuchar y elegir el dibujo, emparejar y escribir →
+frases → repaso del tema.
+
+Para sumar un tema nuevo:
+
+1. Copiá un archivo `tNN-*.js` de `js/content/ru` o `js/content/en` y cambiá el contenido (entre 8 y 16 palabras, mínimo 4 con dibujo distinto, mínimo 4 frases).
+2. Importalo en `js/content/index.js` y agregalo con `topicUnit(tema, 'ru')` al principio de `units`.
+3. Corré `npm test`: revisa los acentos del ruso, los dibujos repetidos y arma cada sesión 25 veces para detectar ejercicios mal formados.
+
+En Perfil se elige el modo de las lecciones (tranquilo o con 5 vidas) y se apagan los sonidos.
+
 ## Notas
 
 - **Nivel de tu novia:** el curso de inglés arranca en B1. Si necesita algo más básico, puede usar el modo libre mientras se suman lecciones A2.

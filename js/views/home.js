@@ -1,7 +1,7 @@
 // Inicio: qué toca hoy en cada curso.
 
 import { h, plural } from '../util.js';
-import { getUser, getSettings, streak, lastDays, todayActivity } from '../store.js';
+import { getUser, getSettings, streak, lastDays, todayActivity, totalXp } from '../store.js';
 import { courseList, findLesson } from '../content/index.js';
 import { courseProgress, nextLesson, reviewCounts } from '../progress.js';
 import { progressBar, emptyState } from '../ui.js';
@@ -93,9 +93,11 @@ export default function homeView(root) {
       h(
         'p',
         { class: 'streak' },
+        days > 0 ? h('span', { class: 'flame', 'aria-hidden': 'true' }, '🔥 ') : null,
         days > 0
           ? `${days} ${plural(days, 'día seguido', 'días seguidos')} estudiando.`
           : 'Hoy es un buen día para empezar la racha.',
+        totalXp() > 0 ? h('span', { class: 'xp-total' }, ` ⭐ ${totalXp()} puntos`) : null,
       ),
     ),
     courses.length

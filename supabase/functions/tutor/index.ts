@@ -127,20 +127,32 @@ async function withTimeout(url: string, init: RequestInit, ms = 25000): Promise<
 async function callGroq(system: string, msgs: Msg[]): Promise<string> {
   const key = Deno.env.get('GROQ_API_KEY');
   if (!key) throw new Error('Falta GROQ_API_KEY');
-  const res = await withTimeout('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: Deno.env.get('GROQ_MODEL') || 'llama-3.3-70b-versatile',
-      messages: [{ role: 'system', content: system }, ...msgs],
-      temperature: 0.5,
-      max_tokens: 700,
-      response_format: { type: 'json_object' },
-    }),
-  });
-  if (!res.ok) throw new Error(`Groq ${res.status}: ${(await res.text()).slice(0, 200)}`);
-  const data = await res.json();
-  return data.choices?.[0]?.message?.content ?? '';
+  // Groq cambia su lista de modelos seguido: probamos varios en orden y usamos el primero que exista.
+  const models = [Deno.env.get('GROQ_MODEL'), 'openai/gpt-oss-120b', 'llama-3.3-70b-versatile', 'openai/gpt-oss-20b', 'llama-3.1-8b-instant'].filter(
+    (m, i, all): m is string => !!m && all.indexOf(m) === i,
+  );
+  let lastError = '';
+  for (const model of models) {
+    const res = await withTimeout('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        model,
+        messages: [{ role: 'system', content: system }, ...msgs],
+        temperature: 0.5,
+        max_tokens: 1500,
+        response_format: { type: 'json_object' },
+        ...(model.startsWith('openai/gpt-oss') ? { reasoning_effort: 'low' } : {}),
+      }),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return data.choices?.[0]?.message?.content ?? '';
+    }
+    lastError = `Groq ${model} ${res.status}: ${(await res.text()).slice(0, 200)}`;
+    if (res.status !== 404 && res.status !== 400) break;
+  }
+  throw new Error(lastError);
 }
 
 async function callGemini(system: string, msgs: Msg[]): Promise<string> {

@@ -15,6 +15,8 @@ export const defaultSettings = () => ({
   courses: ['en'],
   newPerDay: 10,
   freeMode: false,
+  mode: 'relax', // relax: sin vidas · duo: 5 vidas por lección
+  sound: true,
   rate: 0.9,
   enAccent: 'en-US',
   theme: 'auto',
@@ -190,6 +192,18 @@ export function streak() {
     cursor = addDays(cursor, -1);
   }
   return count;
+}
+
+// Puntos acumulados: 10 por ejercicio bien, 2 por intentarlo y 5 por tarjeta repasada.
+export function totalXp(course = null) {
+  let xp = 0;
+  for (const day of Object.values(state.log)) {
+    for (const [id, e] of Object.entries(day)) {
+      if (course && id !== course) continue;
+      xp += e.correct * 10 + (e.exercises - e.correct) * 2 + e.reviews * 5;
+    }
+  }
+  return xp;
 }
 
 export function lastDays(n = 7) {

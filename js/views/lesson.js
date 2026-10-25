@@ -1,7 +1,8 @@
 // Una lección: teoría, diálogo, vocabulario, práctica y resultado.
 
 import { h, $$, toast, plural } from '../util.js';
-import { findLesson, getCourse, cardsOfLesson } from '../content/index.js';
+import { findLesson, getCourse, cardsOfLesson, isTopicLesson } from '../content/index.js';
+import topicView from './topic.js';
 import { isUnlocked, reviewCounts } from '../progress.js';
 import { ensureCards, saveLessonResult, logActivity } from '../store.js';
 import { runExercises, cancelExercises } from '../exercises.js';
@@ -35,6 +36,9 @@ export default function lessonView(root, courseId, lessonId) {
     location.replace(`#/course/${courseId}`);
     return;
   }
+
+  // Las sesiones de los temas (palabras, audio, puntos) tienen su propia pantalla.
+  if (isTopicLesson(found.lesson)) return topicView(root, course, found);
 
   const { lesson, next } = found;
   const lang = course.lang;
