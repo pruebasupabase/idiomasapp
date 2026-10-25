@@ -1,0 +1,13 @@
+{
+  "name": "cuaderno",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "PWA personal para aprender ruso e inglés.",
+  "scripts": {
+    "validate": "node scripts/validate-content.mjs",
+    "test": "node scripts/validate-content.mjs && node scripts/test-logic.mjs",
+    "build": "node scripts/update-sw.mjs",
+    "start": "npx --yes serve ."
+  }
+}
