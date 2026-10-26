@@ -15,7 +15,7 @@ import {
   importData,
   unloadUser,
 } from '../store.js';
-import { isLocalMode, signOut } from '../auth.js';
+import { isLocalMode, signOut, changePassword } from '../auth.js';
 import { courseProgress } from '../progress.js';
 import { isMature } from '../srs.js';
 import { speak, hasVoiceFor, canSpeak, setVoiceConfig } from '../speech.js';
@@ -41,6 +41,33 @@ export default function meView(root) {
   const user = getUser();
   const settings = getSettings();
 
+  // ---------- cambiar contraseña ----------
+  const newPass = h('input', { class: 'field', type: 'password', autocomplete: 'new-password', minlength: 6, placeholder: 'Contraseña nueva (mínimo 6 caracteres)', 'aria-label': 'Contraseña nueva' });
+  const passMsg = h('p', { class: 'muted small', role: 'status' });
+  const passBtn = h(
+    'button',
+    {
+      class: 'btn',
+      type: 'button',
+      onclick: async () => {
+        if (newPass.value.length < 6) {
+          passMsg.textContent = 'Tiene que tener al menos 6 caracteres.';
+          return;
+        }
+        passBtn.disabled = true;
+        try {
+          await changePassword(newPass.value);
+          newPass.value = '';
+          passMsg.textContent = 'Listo, ya cambiaste la contraseña.';
+        } catch (err) {
+          passMsg.textContent = `No se pudo cambiar: ${err.message}`;
+        }
+        passBtn.disabled = false;
+      },
+    },
+    'Cambiar contraseña',
+  );
+
   // ---------- cuenta ----------
   const account = section(
     'Cuenta',
@@ -60,6 +87,7 @@ export default function meView(root) {
           },
           'Cerrar sesión',
         ),
+    isLocalMode ? null : h('div', { class: 'stack' }, newPass, passBtn, passMsg),
   );
 
   // ---------- cursos ----------

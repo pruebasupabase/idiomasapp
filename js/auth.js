@@ -76,3 +76,9 @@ export async function sendPasswordReset(email) {
   });
   if (error) throw error;
 }
+
+// Cambia la contraseña de la cuenta con la que ya iniciaste sesión.
+export async function changePassword(newPassword) {
+  const { error } = await getClient().auth.updateUser({ password: newPassword });
+  if (error) throw error;
+}
