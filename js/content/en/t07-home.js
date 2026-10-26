@@ -51,4 +51,60 @@ export default {
 <p><span class="say" lang="en">I'm moving out next week.</span> / <span class="say" lang="en">I moved to Córdoba in 2024.</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'You visit an apartment for rent.',
+      lines: [
+        ['Landlord', 'Do you have any questions?', '¿Tiene alguna pregunta?'],
+      ],
+      ask: 'Preguntá cuánto es el alquiler.',
+      options: ['How much is the rent?', 'How much costs the rent?', 'How many is the rent?'],
+      answer: 0,
+      alt: ['How much is the rent per month?'],
+      why: 'How much + is se usa para precios y cantidades incontables.',
+    },
+    {
+      ctx: 'The landlord describes the building.',
+      lines: [
+        ['Landlord', 'It\'s on the fifth floor.', 'Está en el quinto piso.'],
+      ],
+      ask: 'Preguntá si el edificio tiene ascensor.',
+      options: ['Does the building have an elevator?', 'Do the building have an elevator?', 'Is the building have an elevator?'],
+      answer: 0,
+      alt: ['Is there an elevator in the building?', 'Does the building have a lift?'],
+      why: 'Con building (tercera persona) se usa does + have.',
+    },
+    {
+      ctx: 'A neighbor says hello in the hallway.',
+      lines: [
+        ['Neighbor', 'Hi! Are you the new neighbor?', '¡Hola! ¿Sos el nuevo vecino?'],
+      ],
+      ask: 'Decile que te mudaste ayer.',
+      options: ['Yes, I moved in yesterday.', 'Yes, I moved yesterday in.', 'Yes, I move in yesterday.'],
+      answer: 0,
+      why: 'Move in es «mudarse a». Con yesterday va en pasado.',
+    },
+    {
+      ctx: 'You are locked out.',
+      lines: [
+        ['Landlord', 'Hello? What\'s wrong?', '¿Hola? ¿Qué pasó?'],
+      ],
+      ask: 'Decile que perdiste la llave.',
+      options: ['I lost my key.', 'I lose my key.', 'I have lost me key.'],
+      answer: 0,
+      alt: ['I\'ve lost my key.', 'I have lost my key.'],
+      why: 'Lost es el pasado de lose, y my es «mi».',
+    },
+    {
+      ctx: 'A neighbor asks about noise.',
+      lines: [
+        ['Neighbor', 'Is it noisy at night?', '¿Hay ruido de noche?'],
+      ],
+      ask: 'Decile que no, que la calle es muy tranquila.',
+      options: ['No, the street is very quiet.', 'No, the street are very quiet.', 'No, the street is very quietly.'],
+      answer: 0,
+      alt: ['No, it\'s a very quiet street.'],
+      why: 'Después de be va un adjetivo (quiet), no un adverbio.',
+    },
+  ],
 };

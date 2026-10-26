@@ -26,9 +26,41 @@ function grade(given, answers, { loose = false } = {}) {
 
 // ---------- piezas comunes ----------
 
+// Una escena de la vida real: dónde estás y qué te dicen. Tocar un globo lo reproduce con audio.
+function sceneNode(scene, ctx) {
+  const box = h('div', { class: `scene${ctx.lang === 'ru' ? ' show-es' : ''}` });
+  if (scene.ctx) box.append(h('p', { class: 'scene-ctx' }, scene.ctx));
+  scene.lines.forEach(([who, text, es], i) => {
+    box.append(
+      h(
+        'div',
+        { class: `bubble${i % 2 ? ' right' : ''}` },
+        h('span', { class: 'bubble-who' }, who),
+        h(
+          'button',
+          { class: 'bubble-text', type: 'button', lang: ctx.lang, 'aria-label': `Escuchar: ${text}`, onclick: () => speak(text, ctx.lang) },
+          h('span', { class: 'bubble-icon', 'aria-hidden': 'true' }, '🔊'),
+          text,
+        ),
+        h('span', { class: 'bubble-es' }, es),
+      ),
+    );
+  });
+  const last = scene.lines[scene.lines.length - 1];
+  box.append(
+    h('button', { class: 'link-btn scene-toggle', type: 'button', onclick: () => box.classList.toggle('show-es') }, 'Ver / ocultar traducción'),
+  );
+  // Arranca solo con lo último que te dijeron.
+  setTimeout(() => {
+    if (box.isConnected && !scene.noAuto) speak(last[1], ctx.lang);
+  }, 450);
+  return box;
+}
+
 function prompt(item, ctx, instruction) {
   const parts = [];
   if (instruction) parts.push(h('p', { class: 'ex-instruction' }, instruction));
+  if (item.scene) parts.push(sceneNode(item.scene, ctx));
   if (item.big) parts.push(h('div', { class: 'ex-big', 'aria-hidden': 'true' }, item.big));
   if (item.q) parts.push(h('p', { class: 'ex-q', html: fmt(item.q) }));
   if (item.audio) {

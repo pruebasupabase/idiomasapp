@@ -51,4 +51,56 @@ export default {
 <p>La «г» de <span class="say" lang="ru">сего́дня</span> suena como «в»: «севóдня».</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Un amigo te pregunta qué día es.',
+      lines: [
+        ['Друг', 'Како́й сего́дня день?', '¿Qué día es hoy?'],
+      ],
+      ask: 'Decile que hoy es viernes.',
+      options: ['Сего́дня пя́тница.', 'За́втра суббо́та.', 'Вчера́ был понеде́льник.'],
+      answer: 0,
+      why: 'Сего́дня es «hoy» y пя́тница es «viernes».',
+    },
+    {
+      ctx: 'Es temprano y entrás al trabajo.',
+      lines: [
+        ['Колле́га', 'До́брое у́тро!', '¡Buen día!'],
+      ],
+      ask: 'Respondé el saludo.',
+      options: ['До́брое у́тро!', 'Споко́йной но́чи!', 'До за́втра!'],
+      answer: 0,
+      why: 'Se contesta igual: До́брое у́тро!',
+    },
+    {
+      ctx: 'Te vas del trabajo y mañana volvés.',
+      lines: [
+        ['Колле́га', 'До за́втра!', '¡Hasta mañana!'],
+      ],
+      ask: 'Despedite con «hasta mañana».',
+      options: ['До́брое у́тро!', 'До за́втра!', 'Како́й сего́дня день?'],
+      answer: 1,
+      why: 'До за́втра significa «hasta mañana».',
+    },
+    {
+      ctx: 'Una amiga quiere salir el domingo.',
+      lines: [
+        ['Ли́за', 'Ты рабо́таешь в воскресе́нье?', '¿Trabajás el domingo?'],
+      ],
+      ask: 'Decile que no trabajás.',
+      options: ['Нет, я не рабо́таю.', 'Да, я рабо́таю.', 'Споко́йной но́чи!'],
+      answer: 0,
+      why: 'La negación не va antes del verbo: я не рабо́таю.',
+    },
+    {
+      ctx: 'Es de noche y te vas a dormir.',
+      lines: [
+        ['Ба́бушка', 'Споко́йной но́чи!', '¡Que descanses!'],
+      ],
+      ask: 'Respondé lo mismo.',
+      options: ['До́брый день!', 'Споко́йной но́чи!', 'До́брое у́тро!'],
+      answer: 1,
+      why: 'Споко́йной но́чи! se dice al despedirse para dormir.',
+    },
+  ],
 };

@@ -46,4 +46,61 @@ export default {
 <p><span class="say" lang="en">I have worked here since 2023.</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'A job interview for an IT position. The interviewer starts.',
+      lines: [
+        ['Interviewer', 'Tell me about yourself.', 'Contame sobre vos.'],
+      ],
+      ask: 'Decile que tenés tres años de experiencia en IT.',
+      options: ['I have three years of experience in IT.', 'I has three years of experience in IT.', 'I have three years of experiences in IT.'],
+      answer: 0,
+      alt: ['I have three years experience in IT.'],
+      why: 'Experience es incontable en este sentido: no lleva «-s». Con I se usa have.',
+    },
+    {
+      ctx: 'The interviewer asks about your strengths.',
+      lines: [
+        ['Interviewer', 'What are your strengths?', '¿Cuáles son tus fortalezas?'],
+      ],
+      ask: 'Decile que sos bueno trabajando en equipo.',
+      options: ['I\'m good at working in a team.', 'I\'m good to work in team.', 'I\'m good at work in a team.'],
+      answer: 0,
+      alt: ['I am good at working in a team.', 'I\'m good at working in teams.'],
+      why: 'Después de good at va un verbo con -ing.',
+    },
+    {
+      ctx: 'Your manager invites you to a meeting that clashes with another one.',
+      lines: [
+        ['Manager', 'Can you join the meeting at ten?', '¿Podés venir a la reunión a las diez?'],
+      ],
+      ask: 'Decile que lo sentís pero tenés otra reunión a esa hora.',
+      options: ['I\'m sorry, but I have another meeting then.', 'I\'m sorry, but I have another meeting at the ten.', 'I\'m sorry, but I am another meeting then.'],
+      answer: 0,
+      alt: ['I am sorry, but I have another meeting then.', 'Sorry, but I have another meeting then.'],
+      why: 'Then significa «a esa hora» y evita repetir la hora.',
+    },
+    {
+      ctx: 'A recruiter is discussing the offer with you.',
+      lines: [
+        ['Recruiter', 'Do you have any questions?', '¿Tenés alguna pregunta?'],
+      ],
+      ask: 'Preguntá cuál es el rango salarial del puesto.',
+      options: ['What is the salary range for this position?', 'What is the salary for this position of range?', 'Which are the salary range of this position?'],
+      answer: 0,
+      alt: ['What is the salary range for this role?', 'What\'s the salary range for this position?'],
+      why: 'For this position significa «para este puesto».',
+    },
+    {
+      ctx: 'A project is running late.',
+      lines: [
+        ['Manager', 'Will you finish the report by Friday?', '¿Terminás el informe para el viernes?'],
+      ],
+      ask: 'Decile que sí, que vas a cumplir el plazo.',
+      options: ['Yes, I\'ll meet the deadline.', 'Yes, I\'ll do the deadline.', 'Yes, I\'ll meet the date limit.'],
+      answer: 0,
+      alt: ['Yes, I will meet the deadline.'],
+      why: 'Con deadline el verbo natural es meet (cumplir).',
+    },
+  ],
 };

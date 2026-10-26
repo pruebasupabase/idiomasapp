@@ -52,4 +52,61 @@ export default {
 <p>Además de <span lang="en">please</span>, el tono de voz hace la mitad del trabajo.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'You sit down at a restaurant.',
+      lines: [
+        ['Waiter', 'Are you ready to order?', '¿Están listos para pedir?'],
+      ],
+      ask: 'Pedí el pollo.',
+      options: ['Yes, I\'ll have the chicken, please.', 'Yes, I want chicken now.', 'Yes, give me the chicken.'],
+      answer: 0,
+      alt: ['Yes, I will have the chicken, please.'],
+      why: 'I\'ll have… es la forma más natural y amable de pedir.',
+    },
+    {
+      ctx: 'The waiter wants to be sure about your order.',
+      lines: [
+        ['Waiter', 'Do you have any allergies?', '¿Tiene alguna alergia?'],
+      ],
+      ask: 'Decile que sos alérgico a las nueces.',
+      options: ['Yes, I\'m allergic to nuts.', 'Yes, I have allergic to nuts.', 'Yes, I am allergy of nuts.'],
+      answer: 0,
+      alt: ['Yes, I am allergic to nuts.'],
+      why: 'Allergic es el adjetivo (alérgico); allergy es el sustantivo.',
+    },
+    {
+      ctx: 'Your dish arrives and it is very hot.',
+      lines: [
+        ['Waiter', 'How is everything?', '¿Cómo está todo?'],
+      ],
+      ask: 'Decile que está un poco picante para vos.',
+      options: ['It\'s a bit too spicy for me.', 'It\'s too much spicy for me.', 'It is spicy very.'],
+      answer: 0,
+      alt: ['It is a bit too spicy for me.'],
+      why: 'A bit too + adjetivo suaviza una queja.',
+    },
+    {
+      ctx: 'You finished your main course.',
+      lines: [
+        ['Waiter', 'Would you like dessert?', '¿Quieren postre?'],
+      ],
+      ask: 'Decile que no y pedí la cuenta.',
+      options: ['No, thank you. Could we have the bill, please?', 'No, thanks. Give me the bill.', 'No, thank you. I want pay.'],
+      answer: 0,
+      alt: ['No, thanks. Could we get the bill, please?', 'No, thank you. Could we get the bill, please?'],
+      why: 'Could we have…? suena amable y se usa para pedir la cuenta.',
+    },
+    {
+      ctx: 'The waiter brings the wrong dish.',
+      lines: [
+        ['Waiter', 'Here is your fish.', 'Acá está su pescado.'],
+      ],
+      ask: 'Decile con educación que pediste pollo.',
+      options: ['Excuse me, I ordered the chicken.', 'Excuse me, I have ordered chicken it.', 'Excuse me, this is not what I want it.'],
+      answer: 0,
+      alt: ['Excuse me, I ordered chicken.'],
+      why: 'Excuse me suaviza el reclamo. Ordered va en pasado porque ya lo pediste.',
+    },
+  ],
 };

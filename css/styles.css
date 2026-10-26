@@ -211,6 +211,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* sin zoom por doble toque; el scroll sigue andando */
+  touch-action: manipulation;
 }
 
 body {
@@ -2498,4 +2500,60 @@ a.node:active .node-disc {
   100% {
     box-shadow: 0 0 0 22px transparent;
   }
+}
+
+/* ---------- situaciones: globos de conversación ---------- */
+.scene {
+  margin: 0 0 18px;
+}
+.scene-ctx {
+  margin: 0 0 10px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+.bubble {
+  display: grid;
+  gap: 2px;
+  max-width: 92%;
+  margin: 0 0 10px;
+}
+.bubble.right {
+  margin-left: auto;
+}
+.bubble-who {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.bubble-text {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid var(--line);
+  border-radius: 16px 16px 16px 4px;
+  background: var(--paper-2);
+  color: var(--text);
+  font: 1.2rem/1.35 var(--serif);
+  text-align: left;
+  cursor: pointer;
+}
+.bubble.right .bubble-text {
+  border-radius: 16px 16px 4px 16px;
+}
+.bubble-icon {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+.bubble-es {
+  display: none;
+  padding: 0 6px;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.scene.show-es .bubble-es {
+  display: block;
+}
+.scene-toggle {
+  font-size: 0.85rem;
 }

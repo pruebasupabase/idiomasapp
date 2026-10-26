@@ -51,4 +51,61 @@ export default {
 <p>Para avisar a tu equipo: <span class="say" lang="en">The fix is live.</span> (ya está en producción).</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Your coworker is worried about the website.',
+      lines: [
+        ['Colleague', 'Is the site working?', '¿Anda el sitio?'],
+      ],
+      ask: 'Decile que el sitio está caído.',
+      options: ['No, the site is down.', 'No, the site is fall.', 'No, the site has down.'],
+      answer: 0,
+      alt: ['No, the website is down.'],
+      why: 'Down significa «caído» (que no funciona).',
+    },
+    {
+      ctx: 'A bug appeared after the last update.',
+      lines: [
+        ['Manager', 'Can you reproduce the bug?', '¿Podés reproducir el error?'],
+      ],
+      ask: 'Decile que sí, y que ya estás trabajando en el arreglo.',
+      options: ['Yes, and I\'m working on the fix.', 'Yes, and I work in the fix now.', 'Yes, and I\'m working at the fix.'],
+      answer: 0,
+      alt: ['Yes, and I am working on the fix.'],
+      why: 'Work on es la combinación correcta: work on a fix.',
+    },
+    {
+      ctx: 'Your team is planning the release.',
+      lines: [
+        ['Manager', 'When will you deploy?', '¿Cuándo vas a desplegar?'],
+      ],
+      ask: 'Decile que desplegás esta tarde.',
+      options: ['I\'ll deploy this afternoon.', 'I deploy at this afternoon.', 'I\'ll deployed this afternoon.'],
+      answer: 0,
+      alt: ['I will deploy this afternoon.', 'I\'ll deploy it this afternoon.'],
+      why: 'Con una decisión del momento se usa will + verbo base.',
+    },
+    {
+      ctx: 'A teammate is locked out of their account.',
+      lines: [
+        ['Teammate', 'I forgot my password.', 'Me olvidé la contraseña.'],
+      ],
+      ask: 'Sugerile restablecerla desde la página de login.',
+      options: ['You can reset it on the login page.', 'You can restart it from login page.', 'You can reset it in the login.'],
+      answer: 0,
+      alt: ['You can reset it from the login page.'],
+      why: 'Reset es restablecer; on the login page es la preposición correcta.',
+    },
+    {
+      ctx: 'The server went down overnight.',
+      lines: [
+        ['Boss', 'What happened?', '¿Qué pasó?'],
+      ],
+      ask: 'Decile que el servidor se cayó anoche.',
+      options: ['The server crashed last night.', 'The server has crashed last night.', 'The server crash last night.'],
+      answer: 0,
+      alt: ['The server went down last night.'],
+      why: 'Con last night se usa pasado simple, no present perfect.',
+    },
+  ],
 };

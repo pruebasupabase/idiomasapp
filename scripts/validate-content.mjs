@@ -221,6 +221,26 @@ function checkTopic(courseId, lang, lesson) {
   });
   if (new Set(phrases.map((p) => p.es)).size !== phrases.length) fail(where, 'frases con el mismo significado');
 
+  const scenes = topic.scenes || [];
+  if (scenes.length && (scenes.length < 5 || scenes.length > 7)) fail(where, `un tema lleva entre 5 y 7 situaciones (tiene ${scenes.length})`);
+  scenes.forEach((sc, i) => {
+    const at = `${where} scenes[${i}]`;
+    for (const key of ['ctx', 'ask', 'why']) if (!isText(sc[key])) fail(at, `falta ${key}`);
+    if (!Array.isArray(sc.lines) || sc.lines.length < 1 || sc.lines.length > 4) return fail(at, 'lines debe tener entre 1 y 4 globos');
+    if (!sc.lines.every((l) => Array.isArray(l) && l.length === 3 && l.every(isText))) fail(at, 'cada globo es [quién, texto, traducción]');
+    if (!Array.isArray(sc.options) || sc.options.length < 3 || sc.options.length > 4) return fail(at, 'options debe tener 3 o 4 respuestas');
+    if (!sc.options.every(isText) || new Set(sc.options).size !== sc.options.length) fail(at, 'options con vacías o repetidas');
+    if (!Number.isInteger(sc.answer) || sc.answer < 0 || sc.answer >= sc.options.length) fail(at, 'answer fuera de rango');
+    if (sc.alt && !isTextList(sc.alt)) fail(at, 'alt debe ser una lista de textos');
+    if (lang === 'ru') {
+      const texts = [...sc.lines.map((l) => l[1]), ...sc.options, ...(sc.alt || [])];
+      for (const text of texts) {
+        for (const word of missingStress(text)) fail(at, `"${word}" sin marca de acento`);
+        for (const word of mixedScript(text)) fail(at, `mezcla de alfabetos en "${word}"`);
+      }
+    }
+  });
+
   const groups = Math.ceil(words.length / 4);
   for (const [i, tip] of (topic.tips || []).entries()) {
     const at = `${where} tips[${i}]`;
@@ -277,7 +297,7 @@ for (const course of Object.values(COURSES)) {
     if (seenLessons.has(lesson.id)) fail(lesson.id, 'id de lección repetido');
     seenLessons.add(lesson.id);
     if (isTopicLesson(lesson)) {
-      if (!checkedTopics.has(lesson.topic.id)) {
+      if (lesson.session !== 'unit' && !checkedTopics.has(lesson.topic.id)) {
         checkedTopics.add(lesson.topic.id);
         checkTopic(course.id, course.lang, lesson);
       }

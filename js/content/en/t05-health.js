@@ -52,4 +52,61 @@ export default {
 <p>En Estados Unidos <span lang="en">sick</span> también se usa para «enfermo».</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'You call a clinic.',
+      lines: [
+        ['Receptionist', 'How can I help you?', '¿En qué puedo ayudarlo?'],
+      ],
+      ask: 'Pedí un turno con el médico.',
+      options: ['I\'d like to make an appointment.', 'I want a turn with doctor.', 'I\'d like to do an appointment.'],
+      answer: 0,
+      alt: ['I would like to make an appointment.', 'I\'d like to make an appointment with the doctor.'],
+      why: 'Make an appointment es la combinación correcta (no do).',
+    },
+    {
+      ctx: 'You are in the doctor’s office.',
+      lines: [
+        ['Doctor', 'What seems to be the problem?', '¿Cuál parece ser el problema?'],
+      ],
+      ask: 'Decile que te duele la cabeza desde hace tres días.',
+      options: ['I\'ve had a headache for three days.', 'I have a headache since three days.', 'I had a headache for three days now.'],
+      answer: 0,
+      alt: ['I have had a headache for three days.'],
+      why: 'Con una duración («tres días») se usa present perfect + for.',
+    },
+    {
+      ctx: 'The doctor is checking your symptoms.',
+      lines: [
+        ['Doctor', 'Do you have a fever?', '¿Tiene fiebre?'],
+      ],
+      ask: 'Decile que no tenés fiebre, pero que tenés mucha tos.',
+      options: ['No, I don\'t, but I have a bad cough.', 'No, I haven\'t fever, but I cough many.', 'No, I don\'t have, but I have a coughing bad.'],
+      answer: 0,
+      alt: ['No, I don\'t have a fever, but I have a bad cough.'],
+      why: 'Bad cough es «tos fuerte». El adjetivo va antes del sustantivo.',
+    },
+    {
+      ctx: 'You go to the pharmacy.',
+      lines: [
+        ['Pharmacist', 'Do you have a prescription?', '¿Tiene receta?'],
+      ],
+      ask: 'Decile que no tenés la receta.',
+      options: ['No, I don\'t have one.', 'No, I don\'t have it prescription.', 'No, I am not have a prescription.'],
+      answer: 0,
+      alt: ['No, I don\'t have a prescription.'],
+      why: 'One reemplaza a «a prescription» para no repetir.',
+    },
+    {
+      ctx: 'The doctor gives you medicine.',
+      lines: [
+        ['Doctor', 'Take one tablet twice a day.', 'Tome una pastilla dos veces por día.'],
+      ],
+      ask: 'Preguntá por cuánto tiempo tenés que tomarla.',
+      options: ['For how long should I take it?', 'How long time I should take it?', 'Until when I should to take it?'],
+      answer: 0,
+      alt: ['For how long do I have to take it?'],
+      why: 'For how long es la forma natural de preguntar por una duración.',
+    },
+  ],
 };

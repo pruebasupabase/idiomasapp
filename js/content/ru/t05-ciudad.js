@@ -52,4 +52,58 @@ export default {
 <p><span class="say" lang="ru">Я е́ду на авто́бусе.</span> → Voy en colectivo. Para ir caminando se usa otro verbo, que vemos más adelante.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Estás perdido en una ciudad rusa.',
+      lines: [
+        ['Прохо́жий', 'Вам помо́чь?', '¿Necesita ayuda?'],
+      ],
+      ask: 'Preguntá dónde hay una farmacia.',
+      options: ['Где здесь апте́ка?', 'Как тебя́ зову́т?', 'Мне на́до спать.'],
+      answer: 0,
+      why: 'Где здесь…? es «¿dónde hay… por acá?».',
+    },
+    {
+      ctx: 'Te explican cómo llegar al metro.',
+      lines: [
+        ['Прохо́жий', 'Пря́мо, пото́м напра́во.', 'Derecho, después a la derecha.'],
+      ],
+      ask: 'Preguntá si queda lejos.',
+      options: ['Э́то далеко́?', 'Э́то мой дом.', 'Спаси́бо, пока́.'],
+      answer: 0,
+      alt: ['Далеко́?'],
+      why: 'Далеко́ significa «lejos». Con una entonación de pregunta ya alcanza.',
+    },
+    {
+      ctx: 'Querés ir a la estación de tren.',
+      lines: [
+        ['Такси́ст', 'Куда́ вам?', '¿Adónde va?'],
+      ],
+      ask: 'Decile que tenés que ir a la estación.',
+      options: ['Мне на́до на вокза́л.', 'Я живу́ в кварти́ре.', 'Где здесь банк?'],
+      answer: 0,
+      why: 'Мне на́до… significa «necesito / tengo que…».',
+    },
+    {
+      ctx: 'Esperás el colectivo en la parada.',
+      lines: [
+        ['Же́нщина', 'Э́то авто́бус но́мер пять?', '¿Este es el colectivo número cinco?'],
+      ],
+      ask: 'Decile que sí.',
+      options: ['Да, э́то авто́бус.', 'Нет, э́то метро́.', 'Извини́те, я не понима́ю.'],
+      answer: 0,
+      alt: ['Да'],
+      why: 'Да es sí. Podés contestar solo с да si querés ir rápido.',
+    },
+    {
+      ctx: 'Pasás frente a un negocio cerrado.',
+      lines: [
+        ['Друг', 'Магази́н закры́т?', '¿La tienda está cerrada?'],
+      ],
+      ask: 'Decile que sí, está cerrada.',
+      options: ['Да, магази́н закры́т.', 'Нет, магази́н большо́й.', 'Магази́н далеко́.'],
+      answer: 0,
+      why: 'Закры́т significa «cerrado».',
+    },
+  ],
 };

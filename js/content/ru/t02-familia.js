@@ -53,4 +53,56 @@ export default {
 <p><span class="say" lang="ru">Э́то моя́ семья́.</span> → Esta es mi familia.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Un compañero nuevo quiere saber de tu familia.',
+      lines: [
+        ['И́горь', 'У тебя́ есть брат?', '¿Tenés un hermano?'],
+      ],
+      ask: 'Decile que sí, que tenés un hermano.',
+      options: ['Да, у меня́ есть брат.', 'Нет, у меня́ есть сестра́.', 'Да, э́то мой друг.'],
+      answer: 0,
+      why: 'У меня́ есть… significa «tengo…». La pregunta es de sí o no, así que se empieza con да.',
+    },
+    {
+      ctx: 'Le mostrás una foto en el celular a una amiga.',
+      lines: [
+        ['Друг', 'Кто э́то?', '¿Quién es?'],
+      ],
+      ask: 'Decile que es tu abuela.',
+      options: ['Э́то моя́ ба́бушка.', 'Э́то мой де́душка.', 'Э́то мой сын.'],
+      answer: 0,
+      why: 'Ба́бушка es femenino, por eso va con моя́.',
+    },
+    {
+      ctx: 'Alguien llama por teléfono y pregunta por tu mamá.',
+      lines: [
+        ['Го́лос', 'Ма́ма до́ма?', '¿Está mamá en casa?'],
+      ],
+      ask: 'Decile que sí, que mamá está en casa.',
+      options: ['Да, ма́ма до́ма.', 'Нет, ма́ма до́ма.', 'Да, па́па до́ма.'],
+      answer: 0,
+      why: 'До́ма significa «en casa» y no cambia nunca.',
+    },
+    {
+      ctx: 'Una amiga te pide que le presentes a tu familia.',
+      lines: [
+        ['Ли́за', 'Кто на фо́то?', '¿Quién está en la foto?'],
+      ],
+      ask: 'Decile que es tu familia.',
+      options: ['Э́то моя́ семья́.', 'Э́то мой друг.', 'У тебя́ есть семья́?'],
+      answer: 0,
+      why: 'Э́то significa «esto/esta es» y no necesita ningún verbo.',
+    },
+    {
+      ctx: 'Querés presentar a tu mejor amigo.',
+      lines: [
+        ['Ма́ма', 'Кто э́то?', '¿Quién es este?'],
+      ],
+      ask: 'Decile a tu mamá que es tu amigo.',
+      options: ['Э́то мой друг.', 'Э́то моя́ сестра́.', 'Э́то мой брат.'],
+      answer: 0,
+      why: 'Друг es amigo; брат es hermano. Con друг va мой porque es masculino.',
+    },
+  ],
 };

@@ -52,4 +52,61 @@ export default {
 <p><span class="say" lang="en">How many</span> va con cosas que se cuentan: <span class="say" lang="en">How many shirts do you need?</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'You are paying at the register.',
+      lines: [
+        ['Cashier', 'Cash or card?', '¿Efectivo o tarjeta?'],
+      ],
+      ask: 'Decile que pagás con tarjeta.',
+      options: ['Card, please.', 'With card, please I pay.', 'Card pay, please.'],
+      answer: 0,
+      alt: ['I\'ll pay by card.', 'I will pay by card.', 'I\'ll pay with a card.'],
+      why: 'En el mostrador alcanza con decir la opción y please.',
+    },
+    {
+      ctx: 'You walk into a shop.',
+      lines: [
+        ['Assistant', 'Can I help you?', '¿Puedo ayudarlo?'],
+      ],
+      ask: 'Decile que solo estás mirando.',
+      options: ['I\'m just looking, thanks.', 'I\'m only seeing, thanks.', 'I just look it, thanks.'],
+      answer: 0,
+      alt: ['I am just looking, thank you.', 'I\'m just looking, thank you.'],
+      why: 'I\'m just looking es la frase hecha para decir «solo estoy mirando».',
+    },
+    {
+      ctx: 'You are trying on a jacket.',
+      lines: [
+        ['Assistant', 'How does it fit?', '¿Cómo te queda?'],
+      ],
+      ask: 'Decile que te queda chico y pedí un talle más grande.',
+      options: ['It\'s too small. Do you have a bigger size?', 'It\'s too little. Do you have a more big size?', 'It\'s small too. Have you a big size?'],
+      answer: 0,
+      alt: ['It is too small. Do you have a bigger size?'],
+      why: 'Bigger es el comparativo de big. Too small = demasiado chico.',
+    },
+    {
+      ctx: 'The product has a defect.',
+      lines: [
+        ['Assistant', 'Is there a problem with it?', '¿Hay algún problema con eso?'],
+      ],
+      ask: 'Decile que querés un reembolso.',
+      options: ['Yes, I\'d like a refund, please.', 'Yes, I want that you give me a refund.', 'Yes, I\'d like refund me, please.'],
+      answer: 0,
+      alt: ['Yes, I would like a refund, please.'],
+      why: 'I\'d like a refund es la forma cortés de pedir.',
+    },
+    {
+      ctx: 'You see an expensive watch.',
+      lines: [
+        ['Assistant', 'It\'s two hundred dollars.', 'Cuesta doscientos dólares.'],
+      ],
+      ask: 'Decile que está fuera de tu presupuesto.',
+      options: ['That\'s out of my budget.', 'That\'s out of my pocket.', 'That\'s too much cheap.'],
+      answer: 0,
+      alt: ['That is out of my budget.'],
+      why: 'Out of my budget es la frase natural para decir que no podés pagarlo.',
+    },
+  ],
 };

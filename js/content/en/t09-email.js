@@ -51,4 +51,61 @@ export default {
 <p><span class="say" lang="en">Could you send it over as soon as possible?</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'A coworker follows up on a message.',
+      lines: [
+        ['Colleague', 'Did you get my email?', '¿Te llegó mi mail?'],
+      ],
+      ask: 'Decile que sí y que respondés mañana.',
+      options: ['Yes, I\'ll reply tomorrow.', 'Yes, I\'ll response to you tomorrow.', 'Yes, I reply to it tomorrow I will.'],
+      answer: 0,
+      alt: ['Yes, I will reply tomorrow.'],
+      why: 'Reply es el verbo (responder). Response es el sustantivo.',
+    },
+    {
+      ctx: 'A client asks for a document.',
+      lines: [
+        ['Client', 'Could you send me the invoice?', '¿Podés mandarme la factura?'],
+      ],
+      ask: 'Respondé que la factura está adjunta.',
+      options: ['Please find the invoice attached.', 'Please find attached the invoice you.', 'Please find the invoice attach.'],
+      answer: 0,
+      alt: ['Please find attached the invoice.'],
+      why: 'Please find attached es la frase estándar de los mails de trabajo.',
+    },
+    {
+      ctx: 'A colleague calls to arrange a meeting.',
+      lines: [
+        ['Colleague', 'Are you available on Monday?', '¿Estás disponible el lunes?'],
+      ],
+      ask: 'Decile que sí, a las diez.',
+      options: ['Yes, I\'m available at ten.', 'Yes, I\'m available in the ten.', 'Yes, I\'m free to ten hours.'],
+      answer: 0,
+      alt: ['Yes, I am available at ten.'],
+      why: 'Con horas se usa at. Available at ten = disponible a las diez.',
+    },
+    {
+      ctx: 'Your boss wants an update.',
+      lines: [
+        ['Boss', 'Did the client answer?', '¿Respondió el cliente?'],
+      ],
+      ask: 'Decile que todavía no y que vas a hacer seguimiento hoy.',
+      options: ['Not yet. I\'ll follow up today.', 'No yet. I\'ll follow up it today.', 'Not yet. I\'ll follow today up him.'],
+      answer: 0,
+      alt: ['Not yet, I\'ll follow up today.', 'Not yet. I will follow up today.'],
+      why: 'Follow up es un phrasal verb que significa dar seguimiento.',
+    },
+    {
+      ctx: 'You reach a voicemail.',
+      lines: [
+        ['Voicemail', 'Please leave a message after the tone.', 'Deje un mensaje después de la señal.'],
+      ],
+      ask: 'Decí que llamás por la reunión y pedí que te devuelvan la llamada.',
+      options: ['Hi, I\'m calling about the meeting. Please call me back.', 'Hi, I call for the meeting. Please call me again back.', 'Hi, I\'m calling for about the meeting. Please you call me.'],
+      answer: 0,
+      alt: ['Hello, I\'m calling about the meeting. Please call me back.'],
+      why: 'Call back significa devolver una llamada.',
+    },
+  ],
 };

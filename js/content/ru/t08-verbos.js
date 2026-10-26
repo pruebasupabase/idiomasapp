@@ -52,4 +52,56 @@ export default {
 <p>Usalas sin miedo, los rusos lo toman con naturalidad.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Una persona rusa te habla muy rápido.',
+      lines: [
+        ['Ру́сский', 'Вы понима́ете?', '¿Entiende?'],
+      ],
+      ask: 'Decile que no entendés.',
+      options: ['Нет, я не понима́ю.', 'Да, я понима́ю.', 'Я зна́ю.'],
+      answer: 0,
+      why: 'Я не понима́ю es la frase más útil cuando recién empezás.',
+    },
+    {
+      ctx: 'Querés que hable más despacio.',
+      lines: [
+        ['Ру́сский', 'Я говорю́ о́чень бы́стро!', '¡Hablo muy rápido!'],
+      ],
+      ask: 'Pedile que hable más despacio.',
+      options: ['Говори́те ме́дленнее, пожа́луйста.', 'Я хочу́ спать.', 'Я зна́ю.'],
+      answer: 0,
+      why: 'Ме́дленнее significa «más despacio».',
+    },
+    {
+      ctx: 'Un compañero te pregunta qué hacés.',
+      lines: [
+        ['Друг', 'Что ты де́лаешь?', '¿Qué estás haciendo?'],
+      ],
+      ask: 'Decile que estás leyendo un libro.',
+      options: ['Я чита́ю кни́гу.', 'Я пишу́ письмо́.', 'Я слу́шаю му́зыку.'],
+      answer: 0,
+      why: 'Чита́ть es leer: я чита́ю, ты чита́ешь.',
+    },
+    {
+      ctx: 'Conocés a alguien y te pregunta por el idioma.',
+      lines: [
+        ['А́нна', 'Ты изуча́ешь ру́сский?', '¿Estudiás ruso?'],
+      ],
+      ask: 'Decile que sí, que estudiás ruso.',
+      options: ['Да, я изуча́ю ру́сский язы́к.', 'Нет, я говорю́ по-англи́йски.', 'Да, я зна́ю.'],
+      answer: 0,
+      why: 'Изуча́ть significa «estudiar a fondo / aprender».',
+    },
+    {
+      ctx: 'Te preguntan dónde vivís.',
+      lines: [
+        ['А́нна', 'Где ты живёшь?', '¿Dónde vivís?'],
+      ],
+      ask: 'Decile que vivís en Argentina.',
+      options: ['Я живу́ в Аргенти́не.', 'Я рабо́таю в ба́нке.', 'Мы живём до́ма.'],
+      answer: 0,
+      why: 'Жить es «vivir»: я живу́, ты живёшь.',
+    },
+  ],
 };

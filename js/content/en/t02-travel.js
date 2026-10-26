@@ -52,4 +52,61 @@ export default {
 <p>«Pasaje» de avión se dice <span class="say" lang="en">a flight ticket</span>; <span lang="en">pasaje</span> como trayecto sería <span lang="en">a trip</span>.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'You arrive at the check-in desk.',
+      lines: [
+        ['Agent', 'Good morning. Can I see your passport?', 'Buen día. ¿Puedo ver su pasaporte?'],
+      ],
+      ask: 'Dáselo con educación.',
+      options: ['Sure, here you are.', 'No, I don\'t have it.', 'Yes, it is a flight.'],
+      answer: 0,
+      alt: ['Sure, here it is.', 'Of course, here you are.'],
+      why: 'Here you are es lo que se dice al entregar algo.',
+    },
+    {
+      ctx: 'Your flight is not leaving on time.',
+      lines: [
+        ['Announcement', 'Flight 204 has been delayed by two hours.', 'El vuelo 204 se retrasó dos horas.'],
+      ],
+      ask: 'Preguntale al empleado a qué hora sale ahora.',
+      options: ['What time does it leave now?', 'What time is leaving now?', 'When it is the delay?'],
+      answer: 0,
+      alt: ['What time will it leave now?'],
+      why: 'En una pregunta con what time se usa does + sujeto + verbo base.',
+    },
+    {
+      ctx: 'You arrive at your hotel.',
+      lines: [
+        ['Receptionist', 'Welcome! Do you have a reservation?', '¡Bienvenido! ¿Tiene una reserva?'],
+      ],
+      ask: 'Decile que tenés una reserva a nombre de Moran.',
+      options: ['Yes, I have a booking under Moran.', 'Yes, I have a booking by Moran\'s name.', 'Yes, I booked a reservation to Moran.'],
+      answer: 0,
+      alt: ['Yes, I have a reservation under Moran.'],
+      why: 'Under + apellido es la forma natural de decir «a nombre de».',
+    },
+    {
+      ctx: 'You are at the baggage claim and nothing arrives.',
+      lines: [
+        ['Agent', 'How can I help you?', '¿En qué puedo ayudarlo?'],
+      ],
+      ask: 'Decile que tu equipaje no llegó.',
+      options: ['My luggage hasn\'t arrived.', 'My luggage didn\'t arrive me.', 'My luggages haven\'t arrived.'],
+      answer: 0,
+      alt: ['My luggage has not arrived.', 'My luggage didn\'t arrive.'],
+      why: 'Luggage es incontable: no lleva plural.',
+    },
+    {
+      ctx: 'A tourist stops you on the street.',
+      lines: [
+        ['Tourist', 'Excuse me, how do I get to the station?', 'Disculpe, ¿cómo llego a la estación?'],
+      ],
+      ask: 'Decile que no sos de acá.',
+      options: ['Sorry, I\'m not from here.', 'Sorry, I\'m not of here.', 'Sorry, I don\'t from here.'],
+      answer: 0,
+      alt: ['Sorry, I am not from here.'],
+      why: 'Be from + lugar se usa para decir de dónde sos.',
+    },
+  ],
 };

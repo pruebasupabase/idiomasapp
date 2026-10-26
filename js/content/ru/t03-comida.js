@@ -53,4 +53,57 @@ export default {
 <p>Podés usarlo con un verbo: <span class="say" lang="ru">Я хочу́ пить.</span> (Tengo sed, literalmente «quiero beber»).</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Estás en un café de Moscú.',
+      lines: [
+        ['Официа́нт', 'Что вы хоти́те?', '¿Qué desean?'],
+      ],
+      ask: 'Pedí un té.',
+      options: ['Чай, пожа́луйста.', 'Я не ем мя́со.', 'До свида́ния.'],
+      answer: 0,
+      why: 'Para pedir algo alcanza con decir qué querés y agregar пожа́луйста.',
+    },
+    {
+      ctx: 'Una amiga te ofrece sopa.',
+      lines: [
+        ['Ли́за', 'Хо́чешь суп?', '¿Querés sopa?'],
+      ],
+      ask: 'Decile que sí y agradecé.',
+      options: ['Да, спаси́бо!', 'Нет, спаси́бо.', 'Извини́те!'],
+      answer: 0,
+      why: 'Да es sí y нет es no. La pregunta era de sí o no.',
+    },
+    {
+      ctx: 'Sos vegetariano y te ofrecen un plato con carne.',
+      lines: [
+        ['Хозя́йка', 'Вот мя́со!', '¡Acá hay carne!'],
+      ],
+      ask: 'Decile amablemente que no comés carne.',
+      options: ['Нет, спаси́бо. Я не ем мя́со.', 'Да, я ем мя́со.', 'Я хочу́ пить.'],
+      answer: 0,
+      alt: ['Я не ем мя́со.'],
+      why: 'La negación не va justo antes del verbo: я не ем.',
+    },
+    {
+      ctx: 'Hace mucho calor y tenés sed.',
+      lines: [
+        ['Друг', 'Что ты хо́чешь?', '¿Qué querés?'],
+      ],
+      ask: 'Decile que querés agua.',
+      options: ['Мне вода́, пожа́луйста.', 'Я хочу́ есть.', 'Прия́тного аппети́та!'],
+      answer: 0,
+      why: 'Мне вода́, пожа́луйста es una forma muy natural de pedir algo: «para mí, agua».',
+    },
+    {
+      ctx: 'Es la mañana y desayunás en casa de una amiga rusa.',
+      lines: [
+        ['Ба́бушка', 'Что на за́втрак?', '¿Qué hay para el desayuno?'],
+      ],
+      ask: 'Decile que hay un huevo.',
+      options: ['На за́втрак яйцо́.', 'Я ем мя́со.', 'Я хочу́ пить.'],
+      answer: 0,
+      why: 'На за́втрак significa «para el desayuno».',
+    },
+  ],
 };

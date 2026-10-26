@@ -157,6 +157,28 @@ export const COURSES = {
   },
 };
 
+// Al final de cada unidad de gramática va un repaso con ejercicios de todas sus lecciones.
+for (const course of Object.values(COURSES)) {
+  for (const unit of course.units) {
+    if (unit.isTopic) continue;
+    const last = unit.lessons[unit.lessons.length - 1];
+    unit.lessons.push({
+      id: `${unit.id}-r`,
+      kind: 'topic',
+      session: 'unit',
+      lang: course.lang,
+      pool: unit.lessons.flatMap((lesson) => lesson.exercises || []),
+      title: `Repaso: ${unit.title}`,
+      stage: 'Repaso de la unidad',
+      emoji: '🏁',
+      level: last.level,
+      minutes: 6,
+      goal: unit.blurb,
+      vocab: [],
+    });
+  }
+}
+
 export const courseList = () => Object.values(COURSES);
 export const getCourse = (id) => COURSES[id] || null;
 

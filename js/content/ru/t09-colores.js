@@ -51,4 +51,58 @@ export default {
 <p>Los femeninos siguen igual: <span class="say" lang="ru">больша́я</span>, <span class="say" lang="ru">дорога́я</span>.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Estás en una tienda de ropa.',
+      lines: [
+        ['Продаве́ц', 'Како́й цвет?', '¿Qué color?'],
+      ],
+      ask: 'Decile que querés el rojo.',
+      options: ['Кра́сный, пожа́луйста.', 'Большо́й, пожа́луйста.', 'Спаси́бо, пока́.'],
+      answer: 0,
+      why: 'Кра́сный es rojo. Большо́й es un tamaño, no un color.',
+    },
+    {
+      ctx: 'Un amigo señala tu auto.',
+      lines: [
+        ['Друг', 'Како́й цвет у маши́ны?', '¿De qué color es el auto?'],
+      ],
+      ask: 'Decile que tu auto es negro.',
+      options: ['Э́то чёрная маши́на.', 'Э́то бе́лая маши́на.', 'Э́то ста́рая маши́на.'],
+      answer: 0,
+      alt: ['Чёрная.'],
+      why: 'Маши́на es femenino, así que el adjetivo termina en -ая.',
+    },
+    {
+      ctx: 'Estrenaste celular.',
+      lines: [
+        ['Друг', 'У тебя́ но́вый телефо́н?', '¿Tenés un teléfono nuevo?'],
+      ],
+      ask: 'Decile que sí.',
+      options: ['Да, у меня́ но́вый телефо́н.', 'Нет, у меня́ ста́рый телефо́н.', 'Да, э́то кра́сный дом.'],
+      answer: 0,
+      why: 'Но́вый es nuevo y ста́рый es viejo.',
+    },
+    {
+      ctx: 'Te muestran una casa en el campo.',
+      lines: [
+        ['Хозя́ин', 'Нра́вится?', '¿Te gusta?'],
+      ],
+      ask: 'Decile que es una casa muy linda.',
+      options: ['Да, о́чень краси́вый дом!', 'Нет, он ста́рый.', 'Спаси́бо, пока́.'],
+      answer: 0,
+      alt: ['О́чень краси́вый дом!'],
+      why: 'Краси́вый es lindo. Va con дом porque es masculino.',
+    },
+    {
+      ctx: 'En una feria te muestran una campera.',
+      lines: [
+        ['Продаве́ц', 'Э́то хоро́шая ку́ртка.', 'Es una buena campera.'],
+      ],
+      ask: 'Decile que es muy cara.',
+      options: ['Она́ о́чень дорога́я.', 'Она́ о́чень краси́вая.', 'Она́ ма́ленькая и но́вая.'],
+      answer: 0,
+      why: 'Дорого́й es caro; con ку́ртка (femenino) pasa a дорога́я.',
+    },
+  ],
 };

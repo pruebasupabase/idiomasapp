@@ -52,4 +52,56 @@ export default {
 <p>Para preguntar: <span class="say" lang="ru">Ско́лько тебе́ лет?</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'En un kiosco de Moscú.',
+      lines: [
+        ['Продаве́ц', 'Два ко́фе — де́сять рубле́й.', 'Dos cafés: diez rublos.'],
+      ],
+      ask: 'Preguntá cuánto cuesta un jugo.',
+      options: ['Ско́лько сто́ит сок?', 'Мне два́дцать два го́да.', 'Да, спаси́бо.'],
+      answer: 0,
+      why: 'Ско́лько сто́ит…? es «¿cuánto cuesta…?».',
+    },
+    {
+      ctx: 'Alguien te pregunta tu edad.',
+      lines: [
+        ['Ири́на', 'Ско́лько тебе́ лет?', '¿Cuántos años tenés?'],
+      ],
+      ask: 'Decile que tenés 22 años.',
+      options: ['Мне два́дцать два го́да.', 'У меня́ два бра́та.', 'Э́то оди́н рубль.'],
+      answer: 0,
+      why: 'Para la edad se usa мне («a mí») y el número.',
+    },
+    {
+      ctx: 'En una tienda ves un precio altísimo.',
+      lines: [
+        ['Продаве́ц', 'Пять ты́сяч рубле́й.', 'Cinco mil rublos.'],
+      ],
+      ask: 'Decile que es demasiado caro.',
+      options: ['Э́то сли́шком до́рого.', 'Э́то о́чень краси́во!', 'Ско́лько тебе́ лет?'],
+      answer: 0,
+      why: 'Сли́шком es «demasiado» y до́рого es «caro».',
+    },
+    {
+      ctx: 'Pasás por una cafetería.',
+      lines: [
+        ['Продаве́ц', 'Что вы хоти́те?', '¿Qué desea?'],
+      ],
+      ask: 'Pedí dos cafés.',
+      options: ['Два ко́фе, пожа́луйста.', 'Три мину́ты.', 'Мне де́вять лет.'],
+      answer: 0,
+      why: 'Después de два el sustantivo no cambia en ко́фе, que es invariable.',
+    },
+    {
+      ctx: 'Subís al colectivo.',
+      lines: [
+        ['Конду́ктор', 'Оди́н биле́т — во́семь рубле́й.', 'Un boleto cuesta ocho rublos.'],
+      ],
+      ask: 'Pedí un boleto.',
+      options: ['Оди́н биле́т, пожа́луйста.', 'Два ко́фе, пожа́луйста.', 'Во́семь лет.'],
+      answer: 0,
+      why: 'Оди́н es «uno» y se usa para pedir una unidad.',
+    },
+  ],
 };

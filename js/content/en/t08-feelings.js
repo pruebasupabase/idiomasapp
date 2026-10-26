@@ -52,4 +52,61 @@ export default {
 <p><span lang="en">I'm looking forward to see you.</span> ✘</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'A friend notices you are on edge.',
+      lines: [
+        ['Friend', 'You look nervous. What\'s wrong?', 'Te ves nervioso. ¿Qué te pasa?'],
+      ],
+      ask: 'Decile que estás nervioso por la entrevista de mañana.',
+      options: ['I\'m nervous about tomorrow\'s interview.', 'I\'m nervous for the interview of tomorrow it.', 'I have nervous about interview tomorrow.'],
+      answer: 0,
+      alt: ['I am nervous about my interview tomorrow.', 'I\'m nervous about the interview tomorrow.'],
+      why: 'Nervous about + algo es la combinación habitual.',
+    },
+    {
+      ctx: 'Your friend has good news.',
+      lines: [
+        ['Friend', 'I passed my exam!', '¡Aprobé el examen!'],
+      ],
+      ask: 'Decile que estás muy orgulloso de él.',
+      options: ['I\'m so proud of you!', 'I\'m so proud with you!', 'I\'m so pride of you!'],
+      answer: 0,
+      alt: ['I am so proud of you!'],
+      why: 'Proud of es la combinación correcta; pride es el sustantivo.',
+    },
+    {
+      ctx: 'A coworker is overwhelmed.',
+      lines: [
+        ['Coworker', 'I have so much work.', 'Tengo muchísimo trabajo.'],
+      ],
+      ask: 'Calmalo: decile que no se preocupe, que va a estar todo bien.',
+      options: ['Don\'t worry, it\'ll be fine.', 'Not worry, it will being fine.', 'Don\'t worry, it is going fine be.'],
+      answer: 0,
+      alt: ['Don\'t worry, it will be fine.'],
+      why: 'Don\'t + verbo base se usa para dar órdenes negativas.',
+    },
+    {
+      ctx: 'A friend invites you to a party.',
+      lines: [
+        ['Friend', 'Are you coming to the party?', '¿Venís a la fiesta?'],
+      ],
+      ask: 'Decile que tenés muchas ganas de ir.',
+      options: ['Yes, I\'m looking forward to it.', 'Yes, I\'m looking forward to go.', 'Yes, I look forward it.'],
+      answer: 0,
+      alt: ['Yes, I am looking forward to it.'],
+      why: 'Look forward to lleva un sustantivo o un verbo con -ing.',
+    },
+    {
+      ctx: 'A friend sees you are quiet at a group dinner.',
+      lines: [
+        ['Friend', 'Why are you so quiet?', '¿Por qué estás tan callado?'],
+      ],
+      ask: 'Decile que sos un poco tímido.',
+      options: ['I\'m a bit shy.', 'I\'m a little shame.', 'I have a bit shy.'],
+      answer: 0,
+      alt: ['I am a bit shy.', 'I\'m a little shy.'],
+      why: 'Shy es tímido. Shame significa «vergüenza» (otro sentido).',
+    },
+  ],
 };

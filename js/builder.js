@@ -53,6 +53,23 @@ export function expandTopic(topic, lang) {
     });
   }
 
+  if (topic.scenes?.length) {
+    lessons.push({
+      id: `${topic.id}-s`,
+      kind: 'topic',
+      session: 'scenes',
+      topic,
+      lang,
+      title: topic.title,
+      stage: 'Situaciones',
+      emoji: '🗣️',
+      level: topic.level,
+      minutes: 6,
+      goal: topic.goal,
+      vocab: [],
+    });
+  }
+
   lessons.push({
     id: `${topic.id}-r`,
     kind: 'topic',
@@ -214,6 +231,50 @@ function phrasesSession(lesson) {
   return items;
 }
 
+// ---------- situaciones: te hablan o te pasa algo y tenés que responder ----------
+
+// Elegir qué responder. Las opciones son frases completas en el idioma que estudiás.
+function sceneChoice(scene, lang) {
+  return {
+    type: 'mc',
+    instruction: 'Escuchá la situación y elegí qué respondés.',
+    scene: { ctx: scene.ctx, lines: scene.lines },
+    q: scene.ask,
+    options: scene.options,
+    optLang: lang,
+    answer: scene.answer,
+    say: scene.options[scene.answer],
+    explain: scene.why,
+  };
+}
+
+// Escribir la respuesta. Vale la opción correcta o cualquiera de las variantes de `alt`.
+function sceneWrite(scene) {
+  return {
+    type: 'tr',
+    instruction: 'Respondé escribiendo.',
+    scene: { ctx: scene.ctx, lines: scene.lines, noAuto: true },
+    q: scene.ask,
+    answer: [scene.options[scene.answer], ...(scene.alt || [])],
+    hint: scene.hint,
+    explain: scene.why,
+  };
+}
+
+function scenesSession(lesson) {
+  const { topic, lang } = lesson;
+  const scenes = shuffle(topic.scenes);
+  const items = scenes.map((s) => sceneChoice(s, lang));
+  // En la segunda vuelta, las mismas situaciones, pero escribiendo.
+  for (const s of shuffle(topic.scenes)) items.push(sceneWrite(s));
+  return items;
+}
+
+function unitSession(lesson) {
+  const pool = lesson.pool.filter((ex) => ['mc', 'fill', 'tr', 'order'].includes(ex.type));
+  return shuffle(pool).slice(0, 16);
+}
+
 function reviewSession(lesson) {
   const { topic, lang } = lesson;
   const words = shuffle(topic.words);
@@ -229,6 +290,12 @@ function reviewSession(lesson) {
     items.push(speakPhrase(phrases[phrases.length - 1]));
   }
   items.push(writeWord(words[7 % words.length], lang), writeWord(words[8 % words.length], lang));
+  // Cierre con situaciones reales del tema.
+  if (topic.scenes?.length) {
+    const scenes = shuffle(topic.scenes);
+    for (const sc of scenes.slice(0, 3)) items.push(sceneChoice(sc, lang));
+    for (const sc of scenes.slice(3, 5)) items.push(sceneWrite(sc));
+  }
   return items;
 }
 
@@ -236,5 +303,7 @@ function reviewSession(lesson) {
 export function buildSession(lesson) {
   if (lesson.session === 'phrases') return phrasesSession(lesson);
   if (lesson.session === 'review') return reviewSession(lesson);
+  if (lesson.session === 'scenes') return scenesSession(lesson);
+  if (lesson.session === 'unit') return unitSession(lesson);
   return wordsSession(lesson);
 }

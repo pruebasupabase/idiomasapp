@@ -51,4 +51,57 @@ export default {
 <p><span class="say" lang="ru">Я в кварти́ре.</span> — <span class="say" lang="ru">Ла́мпа на столе́.</span></p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Un amigo viene a tu casa por primera vez.',
+      lines: [
+        ['Друг', 'У тебя́ больша́я кварти́ра?', '¿Tenés un departamento grande?'],
+      ],
+      ask: 'Decile que no, que es chico.',
+      options: ['Нет, она́ ма́ленькая.', 'Да, она́ но́вая.', 'Где мой ключ?'],
+      answer: 0,
+      alt: ['Нет, ма́ленькая.'],
+      why: 'Ма́ленький significa «chico». Concuerda con кварти́ра, por eso termina en -ая.',
+    },
+    {
+      ctx: 'No encontrás tus llaves.',
+      lines: [
+        ['Ма́ма', 'Что ты и́щешь?', '¿Qué estás buscando?'],
+      ],
+      ask: 'Decile que buscás tu llave.',
+      options: ['Я ищу́ ключ.', 'Я ем хлеб.', 'Ключ до́ма.'],
+      answer: 0,
+      why: 'Я ищу́ significa «yo busco». Ключ no cambia después del verbo.',
+    },
+    {
+      ctx: 'Hace frío en tu habitación.',
+      lines: [
+        ['Друг', 'Окно́ откры́то?', '¿La ventana está abierta?'],
+      ],
+      ask: 'Decile que no, que está cerrada.',
+      options: ['Нет, окно́ закры́то.', 'Да, окно́ откры́то.', 'Нет, дверь откры́та.'],
+      answer: 0,
+      why: 'Закры́то es «cerrado» y concuerda con окно́ (neutro).',
+    },
+    {
+      ctx: 'Te muestran un departamento para alquilar.',
+      lines: [
+        ['Хозя́йка', 'Э́то ку́хня.', 'Esta es la cocina.'],
+      ],
+      ask: 'Preguntá dónde está la habitación.',
+      options: ['Где ко́мната?', 'Где ключ?', 'Э́то мой стул.'],
+      answer: 0,
+      why: 'Где…? es la pregunta para «¿dónde está…?».',
+    },
+    {
+      ctx: 'Querés ver un partido de fútbol.',
+      lines: [
+        ['Друг', 'Телеви́зор рабо́тает?', '¿El televisor funciona?'],
+      ],
+      ask: 'Decile que sí, que funciona.',
+      options: ['Да, телеви́зор рабо́тает.', 'Нет, ла́мпа рабо́тает.', 'Да, э́то стол.'],
+      answer: 0,
+      why: 'Рабо́тает significa «funciona» o «trabaja», según el sujeto.',
+    },
+  ],
 };

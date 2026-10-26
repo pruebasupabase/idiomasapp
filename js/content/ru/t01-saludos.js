@@ -51,4 +51,57 @@ export default {
 <p>Escuchala y repetila. Esto pasa en casi todas las palabras.</p>`,
     },
   ],
+  scenes: [
+    {
+      ctx: 'Entrás a una oficina y te recibe la directora, a quien no conocés.',
+      lines: [
+        ['Дире́ктор', 'Здра́вствуйте!', 'Buen día.'],
+      ],
+      ask: 'Saludala con respeto.',
+      options: ['Приве́т!', 'Здра́вствуйте!', 'Пока́!'],
+      answer: 1,
+      why: 'Con alguien a quien no conocés se usa el saludo formal здра́вствуйте. Приве́т es solo para amigos.',
+    },
+    {
+      ctx: 'Un amigo te presenta a una chica en una fiesta.',
+      lines: [
+        ['Друг', 'Э́то А́нна.', 'Ella es Anna.'],
+        ['А́нна', 'Приве́т! Как тебя́ зову́т?', '¡Hola! ¿Cómo te llamás?'],
+      ],
+      ask: 'Decile que te llamás Santi.',
+      options: ['Меня́ зову́т Са́нти.', 'Как дела́?', 'До свида́ния!'],
+      answer: 0,
+      why: 'Меня́ зову́т… significa «me llaman…» y es la forma normal de decir tu nombre.',
+    },
+    {
+      ctx: 'Te chocás con alguien en la calle.',
+      lines: [
+        ['Прохо́жий', 'Осторо́жно!', '¡Cuidado!'],
+      ],
+      ask: 'Pedí disculpas.',
+      options: ['Извини́те!', 'Спаси́бо!', 'Да.'],
+      answer: 0,
+      why: 'Извини́те sirve para pedir perdón o para llamar la atención de alguien.',
+    },
+    {
+      ctx: 'Alguien te ayuda y te alcanza tu mochila.',
+      lines: [
+        ['Же́нщина', 'Вот ваш рюкза́к.', 'Acá tiene su mochila.'],
+      ],
+      ask: 'Agradecele.',
+      options: ['Извини́те!', 'Спаси́бо!', 'Пока́!'],
+      answer: 1,
+      why: 'Спаси́бо es «gracias». Ella te contestaría Пожа́луйста (de nada).',
+    },
+    {
+      ctx: 'Un compañero de clase te pregunta cómo andás.',
+      lines: [
+        ['Друг', 'Как дела́?', '¿Cómo andás?'],
+      ],
+      ask: 'Decile que estás bien y agradecé.',
+      options: ['Хорошо́, спаси́бо!', 'Меня́ зову́т А́нна.', 'Пло́хо, пока́!'],
+      answer: 0,
+      why: 'Как дела́? se responde con хорошо́ (bien) o пло́хо (mal).',
+    },
+  ],
 };

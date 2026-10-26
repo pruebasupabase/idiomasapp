@@ -18,6 +18,11 @@ import tutorView from './views/tutor.js';
 import alphabetView from './views/alphabet.js';
 import meView from './views/me.js';
 
+// Safari de iPhone ignora user-scalable=no: se frena el pellizco a mano.
+for (const name of ['gesturestart', 'gesturechange', 'gestureend']) {
+  document.addEventListener(name, (e) => e.preventDefault());
+}
+
 // [patrón, vista, pestaña activa, ¿modo concentración? (sin barra de pestañas)]
 const ROUTES = [
   [/^\/?$/, homeView, 'home', false],
