@@ -1283,7 +1283,7 @@ a.lesson-row:hover {
 .pen {
   color: var(--pen);
   font-family: var(--serif);
-  font-style: italic;
+  font-style: normal; /* la cursiva rusa cambia la forma de д, и, т y parece otra letra */
   font-weight: 600;
   font-size: 1.2em;
   text-decoration: underline wavy;

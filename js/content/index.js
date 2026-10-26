@@ -5,7 +5,23 @@ import { slug } from '../util.js';
 import { expandTopic } from '../builder.js';
 
 import ruT01 from './ru/t01-saludos.js';
+import ruT02 from './ru/t02-familia.js';
+import ruT03 from './ru/t03-comida.js';
+import ruT04 from './ru/t04-numeros.js';
+import ruT05 from './ru/t05-ciudad.js';
+import ruT06 from './ru/t06-casa.js';
+import ruT07 from './ru/t07-dias.js';
+import ruT08 from './ru/t08-verbos.js';
+import ruT09 from './ru/t09-colores.js';
 import enT01 from './en/t01-trabajo.js';
+import enT02 from './en/t02-travel.js';
+import enT03 from './en/t03-restaurant.js';
+import enT04 from './en/t04-tech.js';
+import enT05 from './en/t05-health.js';
+import enT06 from './en/t06-shopping.js';
+import enT07 from './en/t07-home.js';
+import enT08 from './en/t08-feelings.js';
+import enT09 from './en/t09-email.js';
 
 import ru01 from './ru/01-sonidos.js';
 import ru02 from './ru/02-saludos.js';
@@ -67,6 +83,14 @@ export const COURSES = {
     ],
     units: [
       topicUnit(ruT01, 'ru'),
+      topicUnit(ruT02, 'ru'),
+      topicUnit(ruT03, 'ru'),
+      topicUnit(ruT04, 'ru'),
+      topicUnit(ruT05, 'ru'),
+      topicUnit(ruT06, 'ru'),
+      topicUnit(ruT07, 'ru'),
+      topicUnit(ruT08, 'ru'),
+      topicUnit(ruT09, 'ru'),
       {
         id: 'ru-u1',
         title: 'Gramática: primeros pasos',
@@ -97,6 +121,14 @@ export const COURSES = {
     tools: [],
     units: [
       topicUnit(enT01, 'en'),
+      topicUnit(enT02, 'en'),
+      topicUnit(enT03, 'en'),
+      topicUnit(enT04, 'en'),
+      topicUnit(enT05, 'en'),
+      topicUnit(enT06, 'en'),
+      topicUnit(enT07, 'en'),
+      topicUnit(enT08, 'en'),
+      topicUnit(enT09, 'en'),
       {
         id: 'en-u1',
         title: 'Pronunciación y tiempos verbales',

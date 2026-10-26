@@ -88,6 +88,8 @@ Un tema se escribe una sola vez (palabras con dibujo, frases y datos de gramáti
 sesiones cortas: palabras nuevas con audio → ejercicios de escuchar y elegir el dibujo, emparejar y escribir →
 frases → repaso del tema.
 
+Hoy hay 9 temas por idioma: ruso (saludos, familia, comida, números, ciudad, casa, días, verbos, colores) e inglés (trabajo, viajes, restaurante, tecnología, salud, compras, casa, emociones, mails).
+
 Para sumar un tema nuevo:
 
 1. Copiá un archivo `tNN-*.js` de `js/content/ru` o `js/content/en` y cambiá el contenido (entre 8 y 16 palabras, mínimo 4 con dibujo distinto, mínimo 4 frases).

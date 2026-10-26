@@ -2,7 +2,7 @@
 // La lista de archivos y la versión del caché las genera scripts/update-sw.mjs (corre solo en cada deploy).
 
 /* BUILD:START */
-const CACHE = 'cuaderno-c25bfcfafd';
+const CACHE = 'cuaderno-ef204ef34c';
 const ASSETS = [
   "./",
   "./index.html",
@@ -28,6 +28,7 @@ const ASSETS = [
   "./icons/icon-maskable-512.png",
   "./js/app.js",
   "./js/auth.js",
+  "./js/builder.js",
   "./js/config.js",
   "./js/content/en/01-pronunciacion.js",
   "./js/content/en/02-past-vs-perfect.js",
@@ -44,6 +45,7 @@ const ASSETS = [
   "./js/content/en/13-linking-words.js",
   "./js/content/en/14-phrasal-verbs.js",
   "./js/content/en/15-collocations.js",
+  "./js/content/en/t01-trabajo.js",
   "./js/content/index.js",
   "./js/content/ru/01-sonidos.js",
   "./js/content/ru/02-saludos.js",
@@ -59,9 +61,12 @@ const ASSETS = [
   "./js/content/ru/12-pasado-futuro.js",
   "./js/content/ru/13-movimiento.js",
   "./js/content/ru/14-aspecto.js",
+  "./js/content/ru/t01-saludos.js",
   "./js/exercises.js",
+  "./js/fx.js",
   "./js/keyboard.js",
   "./js/progress.js",
+  "./js/sfx.js",
   "./js/speech.js",
   "./js/srs.js",
   "./js/store.js",
@@ -75,6 +80,7 @@ const ASSETS = [
   "./js/views/login.js",
   "./js/views/me.js",
   "./js/views/review.js",
+  "./js/views/topic.js",
   "./js/views/tutor.js",
   "./vendor/supabase.js"
 ];
