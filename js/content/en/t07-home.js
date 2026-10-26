@@ -7,9 +7,9 @@ export default {
   goal: 'Describir donde vivís, hablar del alquiler y contar cómo es tu barrio.',
   words: [
     { t: 'apartment', es: 'departamento', e: '🏢', ex: 'I live in a small apartment.', exEs: 'Vivo en un departamento chico.' },
-    { t: 'rent', es: 'alquiler', e: '💸', ex: 'The rent is very high.', exEs: 'El alquiler es muy alto.' },
-    { t: 'landlord', es: 'propietario', e: '🧑‍💼', ex: 'My landlord lives downstairs.', exEs: 'Mi propietario vive abajo.' },
-    { t: 'neighbor', es: 'vecino', e: '🏘️', ex: 'My neighbors are friendly.', exEs: 'Mis vecinos son simpáticos.' },
+    { t: 'rent', es: 'alquiler', e: '💸', pic: false, ex: 'The rent is very high.', exEs: 'El alquiler es muy alto.' },
+    { t: 'landlord', es: 'propietario', e: '🧑‍💼', pic: false, ex: 'My landlord lives downstairs.', exEs: 'Mi propietario vive abajo.' },
+    { t: 'neighbor', es: 'vecino', e: '🏘️', pic: false, ex: 'My neighbors are friendly.', exEs: 'Mis vecinos son simpáticos.' },
 
     { t: 'furniture', es: 'muebles', e: '🛋️', ex: 'We need new furniture.', exEs: 'Necesitamos muebles nuevos.' },
     { t: 'kitchen', es: 'cocina', e: '🍳', ex: 'The kitchen is spacious.', exEs: 'La cocina es amplia.' },

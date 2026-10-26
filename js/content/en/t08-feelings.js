@@ -9,17 +9,17 @@ export default {
     { t: 'happy', es: 'feliz', e: '😊', ex: 'I am really happy today.', exEs: 'Hoy estoy muy feliz.' },
     { t: 'sad', es: 'triste', e: '😢', ex: 'She looks sad.', exEs: 'Ella se ve triste.' },
     { t: 'angry', es: 'enojado', e: '😠', ex: 'He was angry about the delay.', exEs: 'Estaba enojado por la demora.' },
-    { t: 'nervous', es: 'nervioso, ansioso', e: '😬', ex: 'I am nervous about the interview.', exEs: 'Estoy nervioso por la entrevista.' },
+    { t: 'nervous', es: 'nervioso, ansioso', e: '😬', pic: false, ex: 'I am nervous about the interview.', exEs: 'Estoy nervioso por la entrevista.' },
 
-    { t: 'proud', es: 'orgulloso', e: '🏅', ex: 'I am proud of you.', exEs: 'Estoy orgulloso de vos.' },
+    { t: 'proud', es: 'orgulloso', e: '🏅', pic: false, ex: 'I am proud of you.', exEs: 'Estoy orgulloso de vos.' },
     { t: 'excited', es: 'entusiasmado', e: '🤩', ex: 'We are excited about the trip.', exEs: 'Estamos entusiasmados con el viaje.' },
     { t: 'tired', es: 'cansado', e: '😴', ex: 'I am too tired to cook.', exEs: 'Estoy demasiado cansado para cocinar.' },
-    { t: 'stressed', es: 'estresado', e: '😰', ex: 'He feels stressed at work.', exEs: 'Se siente estresado en el trabajo.' },
+    { t: 'stressed', es: 'estresado', e: '😰', pic: false, ex: 'He feels stressed at work.', exEs: 'Se siente estresado en el trabajo.' },
 
     { t: 'shy', es: 'tímido', e: '🙈', ex: 'She is a bit shy.', exEs: 'Ella es un poco tímida.' },
-    { t: 'friendly', es: 'simpático, amigable', e: '🤗', ex: 'The staff were very friendly.', exEs: 'El personal fue muy amable.' },
+    { t: 'friendly', es: 'simpático, amigable', e: '🤗', pic: false, ex: 'The staff were very friendly.', exEs: 'El personal fue muy amable.' },
     { t: 'funny', es: 'gracioso', e: '😂', ex: 'He is the funniest person I know.', exEs: 'Es la persona más graciosa que conozco.' },
-    { t: 'reliable', es: 'confiable', e: '🤝', ex: 'She is a reliable colleague.', exEs: 'Es una compañera confiable.' },
+    { t: 'reliable', es: 'confiable', e: '🤝', pic: false, ex: 'She is a reliable colleague.', exEs: 'Es una compañera confiable.' },
   ],
   phrases: [
     { t: "I'm a bit nervous about tomorrow.", es: 'Estoy un poco nervioso por mañana.' },

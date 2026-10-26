@@ -7,8 +7,8 @@ export default {
   goal: 'Nombrar las partes de tu casa y los objetos de todos los días.',
   words: [
     { t: 'дом', es: 'casa, edificio', e: '🏠', ex: 'Мой дом большо́й.', exEs: 'Mi casa es grande.' },
-    { t: 'кварти́ра', es: 'departamento', e: '🏢', ex: 'Моя́ кварти́ра ма́ленькая.', exEs: 'Mi departamento es chico.' },
-    { t: 'ко́мната', es: 'habitación', e: '🛋️', ex: 'Э́то моя́ ко́мната.', exEs: 'Esta es mi habitación.' },
+    { t: 'кварти́ра', es: 'departamento', e: '🏢', pic: false, ex: 'Моя́ кварти́ра ма́ленькая.', exEs: 'Mi departamento es chico.' },
+    { t: 'ко́мната', es: 'habitación', e: '🛋️', pic: false, ex: 'Э́то моя́ ко́мната.', exEs: 'Esta es mi habitación.' },
     { t: 'ку́хня', es: 'cocina', e: '🍳', ex: 'Ку́хня но́вая.', exEs: 'La cocina es nueva.' },
 
     { t: 'окно́', es: 'ventana', e: '🪟', ex: 'Окно́ откры́то.', exEs: 'La ventana está abierta.' },

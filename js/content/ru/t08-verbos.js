@@ -6,20 +6,20 @@ export default {
   level: 'A1',
   goal: 'Usar los doce verbos más comunes para contar qué hacés y qué te gusta.',
   words: [
-    { t: 'де́лать', es: 'hacer', e: '🛠️', ex: 'Что ты де́лаешь?', exEs: '¿Qué estás haciendo?' },
+    { t: 'де́лать', es: 'hacer', e: '🛠️', pic: false, ex: 'Что ты де́лаешь?', exEs: '¿Qué estás haciendo?' },
     { t: 'ду́мать', es: 'pensar', e: '🤔', ex: 'Я ду́маю.', exEs: 'Estoy pensando.' },
     { t: 'говори́ть', es: 'hablar', e: '🗣️', ex: 'Он хорошо́ говори́т.', exEs: 'Habla bien.' },
-    { t: 'понима́ть', es: 'entender', e: '💡', ex: 'Я понима́ю.', exEs: 'Entiendo.' },
+    { t: 'понима́ть', es: 'entender', e: '💡', pic: false, ex: 'Я понима́ю.', exEs: 'Entiendo.' },
 
     { t: 'слу́шать', es: 'escuchar', e: '👂', ex: 'Мы слу́шаем му́зыку.', exEs: 'Escuchamos música.' },
     { t: 'чита́ть', es: 'leer', e: '📖', ex: 'Она́ чита́ет кни́гу.', exEs: 'Ella lee un libro.' },
     { t: 'писа́ть', es: 'escribir', e: '✍️', ex: 'Я пишу́ письмо́.', exEs: 'Escribo una carta.' },
     { t: 'рабо́тать', es: 'trabajar', e: '💼', ex: 'Он рабо́тает в ба́нке.', exEs: 'Trabaja en un banco.' },
 
-    { t: 'жить', es: 'vivir', e: '🏘️', ex: 'Мы живём в Аргенти́не.', exEs: 'Vivimos en Argentina.' },
+    { t: 'жить', es: 'vivir', e: '🏘️', pic: false, ex: 'Мы живём в Аргенти́не.', exEs: 'Vivimos en Argentina.' },
     { t: 'люби́ть', es: 'amar, gustar', e: '❤️', ex: 'Я люблю́ му́зыку.', exEs: 'Me gusta la música.' },
-    { t: 'знать', es: 'saber', e: '🧠', ex: 'Я зна́ю.', exEs: 'Lo sé.' },
-    { t: 'хоте́ть', es: 'querer', e: '✨', ex: 'Я хочу́ спать.', exEs: 'Quiero dormir.' },
+    { t: 'знать', es: 'saber', e: '🧠', pic: false, ex: 'Я зна́ю.', exEs: 'Lo sé.' },
+    { t: 'хоте́ть', es: 'querer', e: '✨', pic: false, ex: 'Я хочу́ спать.', exEs: 'Quiero dormir.' },
   ],
   phrases: [
     { t: 'Я не понима́ю.', es: 'No entiendo.' },

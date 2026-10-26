@@ -19,7 +19,7 @@ export default {
     { t: 'де́вять', es: 'nueve', e: '9️⃣', ex: 'Де́вять студе́нтов.', exEs: 'Nueve estudiantes.' },
     { t: 'де́сять', es: 'diez', e: '🔟', ex: 'Де́сять рубле́й.', exEs: 'Diez rublos.' },
     { t: 'ско́лько', es: 'cuánto', e: '❓', pic: false, ex: 'Ско́лько э́то сто́ит?', exEs: '¿Cuánto cuesta esto?' },
-    { t: 'рубль', es: 'rublo', e: '💵', ex: 'Э́то оди́н рубль.', exEs: 'Esto es un rublo.' },
+    { t: 'рубль', es: 'rublo', e: '💵', pic: false, ex: 'Э́то оди́н рубль.', exEs: 'Esto es un rublo.' },
   ],
   phrases: [
     { t: 'Ско́лько э́то сто́ит?', es: '¿Cuánto cuesta esto?' },

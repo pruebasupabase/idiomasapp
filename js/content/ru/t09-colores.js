@@ -17,9 +17,9 @@ export default {
     { t: 'ма́ленький', es: 'chico', e: '🐜', ex: 'Ма́ленький го́род.', exEs: 'Una ciudad chica.' },
 
     { t: 'но́вый', es: 'nuevo', e: '🆕', ex: 'Но́вый телефо́н.', exEs: 'Un teléfono nuevo.' },
-    { t: 'ста́рый', es: 'viejo', e: '🕰️', ex: 'Ста́рый дом.', exEs: 'Una casa vieja.' },
-    { t: 'краси́вый', es: 'lindo', e: '😍', ex: 'Краси́вый парк.', exEs: 'Un parque lindo.' },
-    { t: 'дорого́й', es: 'caro', e: '💎', ex: 'Э́то дорого́й пода́рок.', exEs: 'Es un regalo caro.' },
+    { t: 'ста́рый', es: 'viejo', e: '🕰️', pic: false, ex: 'Ста́рый дом.', exEs: 'Una casa vieja.' },
+    { t: 'краси́вый', es: 'lindo', e: '😍', pic: false, ex: 'Краси́вый парк.', exEs: 'Un parque lindo.' },
+    { t: 'дорого́й', es: 'caro', e: '💎', pic: false, ex: 'Э́то дорого́й пода́рок.', exEs: 'Es un regalo caro.' },
   ],
   phrases: [
     { t: 'Како́й э́то цвет?', es: '¿De qué color es?' },

@@ -7,18 +7,18 @@ export default {
   goal: 'Preguntar precios, pagar, devolver algo y hablar de lo que podés o no podés comprar.',
   words: [
     { t: 'price', es: 'precio', e: '🏷️', ex: 'What is the price?', exEs: '¿Cuál es el precio?' },
-    { t: 'discount', es: 'descuento', e: '🔖', ex: 'Is there a discount?', exEs: '¿Hay descuento?' },
+    { t: 'discount', es: 'descuento', e: '🔖', pic: false, ex: 'Is there a discount?', exEs: '¿Hay descuento?' },
     { t: 'receipt', es: 'ticket, comprobante', e: '🧾', ex: 'Keep the receipt.', exEs: 'Guardá el ticket.' },
     { t: 'cash', es: 'efectivo', e: '💵', ex: 'I only have cash.', exEs: 'Solo tengo efectivo.' },
 
     { t: 'credit card', es: 'tarjeta de crédito', e: '💳', ex: 'Do you take credit cards?', exEs: '¿Aceptan tarjeta de crédito?' },
-    { t: 'refund', es: 'reembolso', e: '↩️', ex: 'I want a refund.', exEs: 'Quiero un reembolso.' },
-    { t: 'cheap', es: 'barato', e: '🪙', ex: 'This shirt is cheap.', exEs: 'Esta camisa es barata.' },
-    { t: 'expensive', es: 'caro', e: '💎', ex: 'That watch is expensive.', exEs: 'Ese reloj es caro.' },
+    { t: 'refund', es: 'reembolso', e: '↩️', pic: false, ex: 'I want a refund.', exEs: 'Quiero un reembolso.' },
+    { t: 'cheap', es: 'barato', e: '🪙', pic: false, ex: 'This shirt is cheap.', exEs: 'Esta camisa es barata.' },
+    { t: 'expensive', es: 'caro', e: '💎', pic: false, ex: 'That watch is expensive.', exEs: 'Ese reloj es caro.' },
 
-    { t: 'afford', es: 'poder pagar', e: '⚖️', ex: 'I cannot afford a new car.', exEs: 'No puedo pagar un auto nuevo.' },
+    { t: 'afford', es: 'poder pagar', e: '⚖️', pic: false, ex: 'I cannot afford a new car.', exEs: 'No puedo pagar un auto nuevo.' },
     { t: 'size', es: 'talle', e: '📏', ex: 'What size are you?', exEs: '¿Qué talle sos?' },
-    { t: 'bargain', es: 'ganga', e: '🤑', ex: 'This jacket is a real bargain.', exEs: 'Esta campera es una verdadera ganga.' },
+    { t: 'bargain', es: 'ganga', e: '🤑', pic: false, ex: 'This jacket is a real bargain.', exEs: 'Esta campera es una verdadera ganga.' },
     { t: 'wallet', es: 'billetera', e: '👛', ex: 'I left my wallet at home.', exEs: 'Me olvidé la billetera en casa.' },
   ],
   phrases: [

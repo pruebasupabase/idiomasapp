@@ -8,18 +8,18 @@ export default {
   words: [
     { t: 'ма́ма', es: 'mamá', e: '👩', ex: 'Ма́ма до́ма.', exEs: 'Mamá está en casa.' },
     { t: 'па́па', es: 'papá', e: '👨', ex: 'Мой па́па врач.', exEs: 'Mi papá es médico.' },
-    { t: 'брат', es: 'hermano', e: '👦', ex: 'У меня́ есть брат.', exEs: 'Tengo un hermano.' },
-    { t: 'сестра́', es: 'hermana', e: '👧', ex: 'Моя́ сестра́ студе́нтка.', exEs: 'Mi hermana es estudiante.' },
+    { t: 'брат', es: 'hermano', e: '👦', pic: false, ex: 'У меня́ есть брат.', exEs: 'Tengo un hermano.' },
+    { t: 'сестра́', es: 'hermana', e: '👧', pic: false, ex: 'Моя́ сестра́ студе́нтка.', exEs: 'Mi hermana es estudiante.' },
 
     { t: 'ба́бушка', es: 'abuela', e: '👵', ex: 'Моя́ ба́бушка лю́бит чай.', exEs: 'A mi abuela le gusta el té.' },
     { t: 'де́душка', es: 'abuelo', e: '👴', ex: 'Мой де́душка живёт здесь.', exEs: 'Mi abuelo vive acá.' },
-    { t: 'сын', es: 'hijo', e: '🧒', ex: 'Мой сын спит.', exEs: 'Mi hijo está durmiendo.' },
-    { t: 'дочь', es: 'hija', e: '👶', ex: 'Моя́ дочь чита́ет.', exEs: 'Mi hija está leyendo.' },
+    { t: 'сын', es: 'hijo', e: '🧒', pic: false, ex: 'Мой сын спит.', exEs: 'Mi hijo está durmiendo.' },
+    { t: 'дочь', es: 'hija', e: '👶', pic: false, ex: 'Моя́ дочь чита́ет.', exEs: 'Mi hija está leyendo.' },
 
-    { t: 'муж', es: 'marido', e: '🤵', ex: 'Мой муж рабо́тает.', exEs: 'Mi marido trabaja.' },
-    { t: 'жена́', es: 'esposa', e: '👰', ex: 'Моя́ жена́ до́ма.', exEs: 'Mi esposa está en casa.' },
-    { t: 'друг', es: 'amigo', e: '🧑‍🤝‍🧑', ex: 'Э́то мой друг.', exEs: 'Este es mi amigo.' },
-    { t: 'семья́', es: 'familia', e: '🏡', ex: 'Моя́ семья́ больша́я.', exEs: 'Mi familia es grande.' },
+    { t: 'муж', es: 'marido', e: '🤵', pic: false, ex: 'Мой муж рабо́тает.', exEs: 'Mi marido trabaja.' },
+    { t: 'жена́', es: 'esposa', e: '👰', pic: false, ex: 'Моя́ жена́ до́ма.', exEs: 'Mi esposa está en casa.' },
+    { t: 'друг', es: 'amigo', e: '🧑‍🤝‍🧑', pic: false, ex: 'Э́то мой друг.', exEs: 'Este es mi amigo.' },
+    { t: 'семья́', es: 'familia', e: '👨‍👩‍👧‍👦', ex: 'Моя́ семья́ больша́я.', exEs: 'Mi familia es grande.' },
   ],
   phrases: [
     { t: 'У меня́ есть сестра́.', es: 'Tengo una hermana.' },

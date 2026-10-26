@@ -72,7 +72,7 @@ export function expandTopic(topic, lang) {
 
 // ---------- piezas de ejercicio ----------
 
-const introWords = (words) => words.map(({ t, es, e }) => ({ t, es, e }));
+const introWords = (words) => words.map((w) => ({ t: w.t, es: w.es, e: hasPic(w) ? w.e : '' }));
 
 // Escuchás la palabra y elegís el dibujo.
 function hearPicture(w, topic) {
@@ -108,7 +108,9 @@ function hearMeaning(w, topic) {
 
 // Ves el dibujo (o el significado) y elegís la palabra en el idioma.
 function pickWord(w, topic, lang) {
-  const options = [w, ...others(topic.words, w, 3)];
+  // Con dibujo, las opciones salen solo de las palabras con dibujo (así nunca hay dos que encajen).
+  const pool = hasPic(w) ? topic.words.filter(hasPic) : topic.words;
+  const options = [w, ...others(pool, w, 3)];
   const base = {
     type: 'mc',
     instruction: '¿Cómo se dice?',
@@ -125,7 +127,7 @@ function heard(w, topic) {
 }
 
 function matchGroup(words, instruction = 'Uní cada palabra con su significado.') {
-  return { type: 'match', instruction, pairs: words.map((w) => [w.t, w.es, w.e || '']) };
+  return { type: 'match', instruction, pairs: words.map((w) => [w.t, w.es, hasPic(w) ? w.e : '']) };
 }
 
 function dictate(text, instruction = 'Escuchá y escribí lo que oís.') {

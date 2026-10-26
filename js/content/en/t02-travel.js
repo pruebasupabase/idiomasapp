@@ -11,15 +11,15 @@ export default {
     { t: 'passport', es: 'pasaporte', e: '🛂', ex: 'Please show your passport.', exEs: 'Por favor, muestre su pasaporte.' },
     { t: 'luggage', es: 'equipaje', e: '🧳', ex: 'My luggage is heavy.', exEs: 'Mi equipaje pesa mucho.' },
 
-    { t: 'boarding pass', es: 'tarjeta de embarque', e: '🪪', ex: 'I lost my boarding pass.', exEs: 'Perdí mi tarjeta de embarque.' },
-    { t: 'gate', es: 'puerta de embarque', e: '🚪', ex: 'Go to gate twelve.', exEs: 'Andá a la puerta doce.' },
-    { t: 'delay', es: 'demora', e: '⏳', ex: 'There is a two-hour delay.', exEs: 'Hay una demora de dos horas.' },
-    { t: 'customs', es: 'aduana', e: '🛃', ex: 'We waited at customs.', exEs: 'Esperamos en la aduana.' },
+    { t: 'boarding pass', es: 'tarjeta de embarque', e: '🪪', pic: false, ex: 'I lost my boarding pass.', exEs: 'Perdí mi tarjeta de embarque.' },
+    { t: 'gate', es: 'puerta de embarque', e: '🚪', pic: false, ex: 'Go to gate twelve.', exEs: 'Andá a la puerta doce.' },
+    { t: 'delay', es: 'demora', e: '⏳', pic: false, ex: 'There is a two-hour delay.', exEs: 'Hay una demora de dos horas.' },
+    { t: 'customs', es: 'aduana', e: '🛃', pic: false, ex: 'We waited at customs.', exEs: 'Esperamos en la aduana.' },
 
     { t: 'hotel', es: 'hotel', e: '🏨', ex: 'The hotel is near the beach.', exEs: 'El hotel está cerca de la playa.' },
-    { t: 'booking', es: 'reserva', e: '📖', ex: 'I have a booking for tonight.', exEs: 'Tengo una reserva para esta noche.' },
+    { t: 'booking', es: 'reserva', e: '📖', pic: false, ex: 'I have a booking for tonight.', exEs: 'Tengo una reserva para esta noche.' },
     { t: 'map', es: 'mapa', e: '🗺️', ex: 'Can I see the map?', exEs: '¿Puedo ver el mapa?' },
-    { t: 'tourist', es: 'turista', e: '📷', ex: 'Many tourists visit in summer.', exEs: 'Muchos turistas visitan en verano.' },
+    { t: 'tourist', es: 'turista', e: '📷', pic: false, ex: 'Many tourists visit in summer.', exEs: 'Muchos turistas visitan en verano.' },
   ],
   phrases: [
     { t: 'Where is the check-in desk?', es: '¿Dónde está el mostrador de check-in?' },

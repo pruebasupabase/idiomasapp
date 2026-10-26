@@ -7,7 +7,7 @@ export default {
   goal: 'Hablar de código, errores y despliegues con el vocabulario real del trabajo en IT.',
   words: [
     { t: 'bug', es: 'error de código', e: '🐛', ex: 'We found a bug in the login page.', exEs: 'Encontramos un error en la página de login.' },
-    { t: 'feature', es: 'función nueva', e: '✨', ex: 'The new feature launches next week.', exEs: 'La función nueva sale la semana que viene.' },
+    { t: 'feature', es: 'función nueva', e: '✨', pic: false, ex: 'The new feature launches next week.', exEs: 'La función nueva sale la semana que viene.' },
     { t: 'deploy', es: 'desplegar', e: '🚀', ex: 'We deploy to production every Friday.', exEs: 'Desplegamos a producción todos los viernes.' },
     { t: 'database', es: 'base de datos', e: '🗄️', ex: 'The database is down.', exEs: 'La base de datos está caída.' },
 
@@ -17,9 +17,9 @@ export default {
     { t: 'backup', es: 'copia de seguridad', e: '💾', ex: 'I always keep a backup.', exEs: 'Siempre tengo una copia de seguridad.' },
 
     { t: 'network', es: 'red', e: '🌐', ex: 'The network is slow today.', exEs: 'La red está lenta hoy.' },
-    { t: 'security', es: 'seguridad', e: '🔒', ex: 'Security is a top priority.', exEs: 'La seguridad es una prioridad máxima.' },
-    { t: 'release', es: 'versión publicada', e: '📦', ex: 'The next release is on Monday.', exEs: 'La próxima versión sale el lunes.' },
-    { t: 'debug', es: 'depurar', e: '🔍', ex: 'I need to debug this function.', exEs: 'Tengo que depurar esta función.' },
+    { t: 'security', es: 'seguridad', e: '🔒', pic: false, ex: 'Security is a top priority.', exEs: 'La seguridad es una prioridad máxima.' },
+    { t: 'release', es: 'versión publicada', e: '📦', pic: false, ex: 'The next release is on Monday.', exEs: 'La próxima versión sale el lunes.' },
+    { t: 'debug', es: 'depurar', e: '🔍', pic: false, ex: 'I need to debug this function.', exEs: 'Tengo que depurar esta función.' },
   ],
   phrases: [
     { t: 'It works on my machine.', es: 'En mi máquina funciona.' },

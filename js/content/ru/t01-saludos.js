@@ -7,19 +7,19 @@ export default {
   goal: 'Saludar, despedirte, agradecer, pedir disculpas y presentarte en ruso.',
   words: [
     { t: 'приве́т', es: 'hola (con amigos)', e: '👋', ex: 'Приве́т, А́нна!', exEs: '¡Hola, Anna!' },
-    { t: 'пока́', es: 'chau', e: '🚶', ex: 'Пока́, до за́втра!', exEs: '¡Chau, hasta mañana!' },
+    { t: 'пока́', es: 'chau', e: '🚶', pic: false, ex: 'Пока́, до за́втра!', exEs: '¡Chau, hasta mañana!' },
     { t: 'здра́вствуйте', es: 'buen día (formal)', e: '🤝', pic: false, ex: 'Здра́вствуйте, Ири́на Ива́новна!', exEs: '¡Buen día, Irina Ivánovna!' },
     { t: 'до свида́ния', es: 'adiós (formal)', e: '🌇', pic: false, ex: 'До свида́ния, спаси́бо!', exEs: '¡Adiós, gracias!' },
 
     { t: 'спаси́бо', es: 'gracias', e: '🙏', ex: 'Большо́е спаси́бо!', exEs: '¡Muchas gracias!' },
-    { t: 'пожа́луйста', es: 'por favor / de nada', e: '🤲', ex: 'Вода́, пожа́луйста.', exEs: 'Agua, por favor.' },
+    { t: 'пожа́луйста', es: 'por favor / de nada', e: '🤲', pic: false, ex: 'Вода́, пожа́луйста.', exEs: 'Agua, por favor.' },
     { t: 'извини́те', es: 'disculpe', e: '🙇', ex: 'Извини́те, где метро́?', exEs: 'Disculpe, ¿dónde está el metro?' },
     { t: 'да', es: 'sí', e: '✅', ex: 'Да, э́то мой друг.', exEs: 'Sí, es mi amigo.' },
 
     { t: 'нет', es: 'no', e: '❌', ex: 'Нет, спаси́бо.', exEs: 'No, gracias.' },
-    { t: 'хорошо́', es: 'bien', e: '👍', ex: 'Всё хорошо́!', exEs: '¡Todo bien!' },
-    { t: 'пло́хо', es: 'mal', e: '👎', ex: 'Мне пло́хо.', exEs: 'Me siento mal.' },
-    { t: 'прия́тно', es: 'un gusto (al conocer a alguien)', e: '😊', ex: 'О́чень прия́тно!', exEs: '¡Mucho gusto!' },
+    { t: 'хорошо́', es: 'bien', e: '😄', ex: 'Всё хорошо́!', exEs: '¡Todo bien!' },
+    { t: 'пло́хо', es: 'mal', e: '😞', ex: 'Мне пло́хо.', exEs: 'Me siento mal.' },
+    { t: 'прия́тно', es: 'un gusto (al conocer a alguien)', e: '😊', pic: false, ex: 'О́чень прия́тно!', exEs: '¡Mucho gusto!' },
   ],
   phrases: [
     { t: 'Как тебя́ зову́т?', es: '¿Cómo te llamás?' },

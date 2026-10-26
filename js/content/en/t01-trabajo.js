@@ -7,18 +7,18 @@ export default {
   goal: 'Hablar de tu trabajo y tu experiencia, y entender el vocabulario que aparece en una entrevista.',
   words: [
     { t: 'CV', es: 'currículum', e: '📄', ex: 'I sent my CV yesterday.', exEs: 'Mandé mi currículum ayer.' },
-    { t: 'interview', es: 'entrevista', e: '🎤', ex: 'I have a job interview tomorrow.', exEs: 'Mañana tengo una entrevista de trabajo.' },
+    { t: 'interview', es: 'entrevista', e: '🎤', pic: false, ex: 'I have a job interview tomorrow.', exEs: 'Mañana tengo una entrevista de trabajo.' },
     { t: 'salary', es: 'sueldo', e: '💰', ex: 'What is the salary for this position?', exEs: '¿Cuál es el sueldo de este puesto?' },
-    { t: 'skills', es: 'habilidades', e: '🛠️', ex: 'My main skills are Java and SQL.', exEs: 'Mis principales habilidades son Java y SQL.' },
+    { t: 'skills', es: 'habilidades', e: '🛠️', pic: false, ex: 'My main skills are Java and SQL.', exEs: 'Mis principales habilidades son Java y SQL.' },
 
-    { t: 'experience', es: 'experiencia', e: '⭐', ex: 'She has a lot of experience.', exEs: 'Ella tiene mucha experiencia.' },
+    { t: 'experience', es: 'experiencia', e: '⭐', pic: false, ex: 'She has a lot of experience.', exEs: 'Ella tiene mucha experiencia.' },
     { t: 'manager', es: 'jefe, gerente', e: '🧑‍💼', ex: 'My manager is very supportive.', exEs: 'Mi jefe me apoya mucho.' },
     { t: 'team', es: 'equipo', e: '👥', ex: 'I work in a small team.', exEs: 'Trabajo en un equipo chico.' },
-    { t: 'meeting', es: 'reunión', e: '📅', ex: 'The meeting starts at ten.', exEs: 'La reunión empieza a las diez.' },
+    { t: 'meeting', es: 'reunión', e: '📅', pic: false, ex: 'The meeting starts at ten.', exEs: 'La reunión empieza a las diez.' },
 
-    { t: 'deadline', es: 'fecha límite', e: '⏰', ex: 'We have a tight deadline.', exEs: 'Tenemos una fecha límite muy justa.' },
-    { t: 'apply for', es: 'postularse a', e: '📝', ex: 'I applied for three jobs.', exEs: 'Me postulé a tres trabajos.' },
-    { t: 'hire', es: 'contratar', e: '🤝', ex: 'They hired me last month.', exEs: 'Me contrataron el mes pasado.' },
+    { t: 'deadline', es: 'fecha límite', e: '⏰', pic: false, ex: 'We have a tight deadline.', exEs: 'Tenemos una fecha límite muy justa.' },
+    { t: 'apply for', es: 'postularse a', e: '📝', pic: false, ex: 'I applied for three jobs.', exEs: 'Me postulé a tres trabajos.' },
+    { t: 'hire', es: 'contratar', e: '🤝', pic: false, ex: 'They hired me last month.', exEs: 'Me contrataron el mes pasado.' },
     { t: 'remote work', es: 'trabajo remoto', e: '🏠', ex: 'I prefer remote work.', exEs: 'Prefiero el trabajo remoto.' },
   ],
   phrases: [

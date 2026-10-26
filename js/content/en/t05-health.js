@@ -7,19 +7,19 @@ export default {
   goal: 'Explicar cómo te sentís, sacar un turno y entender lo que te indica un médico.',
   words: [
     { t: 'doctor', es: 'médico', e: '🩺', ex: 'I need to see a doctor.', exEs: 'Necesito ver a un médico.' },
-    { t: 'headache', es: 'dolor de cabeza', e: '🤕', ex: 'I have a terrible headache.', exEs: 'Tengo un dolor de cabeza terrible.' },
+    { t: 'headache', es: 'dolor de cabeza', e: '🤕', pic: false, ex: 'I have a terrible headache.', exEs: 'Tengo un dolor de cabeza terrible.' },
     { t: 'fever', es: 'fiebre', e: '🤒', ex: 'She has a high fever.', exEs: 'Ella tiene fiebre alta.' },
-    { t: 'cough', es: 'tos', e: '😷', ex: 'I have had a cough for a week.', exEs: 'Tengo tos hace una semana.' },
+    { t: 'cough', es: 'tos', e: '😷', pic: false, ex: 'I have had a cough for a week.', exEs: 'Tengo tos hace una semana.' },
 
-    { t: 'pain', es: 'dolor', e: '😣', ex: 'I feel pain in my back.', exEs: 'Siento dolor en la espalda.' },
+    { t: 'pain', es: 'dolor', e: '😣', pic: false, ex: 'I feel pain in my back.', exEs: 'Siento dolor en la espalda.' },
     { t: 'medicine', es: 'medicamento', e: '💊', ex: 'Take this medicine twice a day.', exEs: 'Tomá este medicamento dos veces por día.' },
-    { t: 'prescription', es: 'receta médica', e: '📝', ex: 'You need a prescription.', exEs: 'Necesitás una receta.' },
-    { t: 'appointment', es: 'turno', e: '📅', ex: 'I have an appointment at nine.', exEs: 'Tengo un turno a las nueve.' },
+    { t: 'prescription', es: 'receta médica', e: '📝', pic: false, ex: 'You need a prescription.', exEs: 'Necesitás una receta.' },
+    { t: 'appointment', es: 'turno', e: '📅', pic: false, ex: 'I have an appointment at nine.', exEs: 'Tengo un turno a las nueve.' },
 
-    { t: 'sore throat', es: 'dolor de garganta', e: '🗣️', ex: 'I have a sore throat.', exEs: 'Me duele la garganta.' },
+    { t: 'sore throat', es: 'dolor de garganta', e: '🗣️', pic: false, ex: 'I have a sore throat.', exEs: 'Me duele la garganta.' },
     { t: 'injury', es: 'lesión', e: '🩹', ex: 'He has a knee injury.', exEs: 'Tiene una lesión en la rodilla.' },
-    { t: 'allergy', es: 'alergia', e: '🤧', ex: 'I have a pollen allergy.', exEs: 'Tengo alergia al polen.' },
-    { t: 'symptoms', es: 'síntomas', e: '🌡️', ex: 'What are your symptoms?', exEs: '¿Cuáles son sus síntomas?' },
+    { t: 'allergy', es: 'alergia', e: '🤧', pic: false, ex: 'I have a pollen allergy.', exEs: 'Tengo alergia al polen.' },
+    { t: 'symptoms', es: 'síntomas', e: '🌡️', pic: false, ex: 'What are your symptoms?', exEs: '¿Cuáles son sus síntomas?' },
   ],
   phrases: [
     { t: 'I have a headache.', es: 'Tengo dolor de cabeza.' },

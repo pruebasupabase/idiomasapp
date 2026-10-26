@@ -6,19 +6,19 @@ export default {
   level: 'B1',
   goal: 'Pedir, preguntar por ingredientes y pagar la cuenta en un restaurante.',
   words: [
-    { t: 'menu', es: 'carta, menú', e: '📜', ex: 'Could I see the menu?', exEs: '¿Podría ver la carta?' },
-    { t: 'waiter', es: 'mozo', e: '🤵', ex: 'The waiter was very kind.', exEs: 'El mozo fue muy amable.' },
+    { t: 'menu', es: 'carta, menú', e: '📜', pic: false, ex: 'Could I see the menu?', exEs: '¿Podría ver la carta?' },
+    { t: 'waiter', es: 'mozo', e: '🤵', pic: false, ex: 'The waiter was very kind.', exEs: 'El mozo fue muy amable.' },
     { t: 'bill', es: 'cuenta', e: '🧾', ex: 'Could we have the bill?', exEs: '¿Nos trae la cuenta?' },
-    { t: 'tip', es: 'propina', e: '💵', ex: 'We left a good tip.', exEs: 'Dejamos una buena propina.' },
+    { t: 'tip', es: 'propina', e: '💵', pic: false, ex: 'We left a good tip.', exEs: 'Dejamos una buena propina.' },
 
-    { t: 'starter', es: 'entrada', e: '🥗', ex: 'I will have a salad as a starter.', exEs: 'Voy a pedir una ensalada de entrada.' },
-    { t: 'main course', es: 'plato principal', e: '🍝', ex: 'The main course was delicious.', exEs: 'El plato principal estaba delicioso.' },
+    { t: 'starter', es: 'entrada', e: '🥗', pic: false, ex: 'I will have a salad as a starter.', exEs: 'Voy a pedir una ensalada de entrada.' },
+    { t: 'main course', es: 'plato principal', e: '🍝', pic: false, ex: 'The main course was delicious.', exEs: 'El plato principal estaba delicioso.' },
     { t: 'dessert', es: 'postre', e: '🍰', ex: 'Do you want dessert?', exEs: '¿Querés postre?' },
-    { t: 'order', es: 'pedir, pedido', e: '📝', ex: 'Are you ready to order?', exEs: '¿Están listos para pedir?' },
+    { t: 'order', es: 'pedir, pedido', e: '📝', pic: false, ex: 'Are you ready to order?', exEs: '¿Están listos para pedir?' },
 
-    { t: 'vegetarian', es: 'vegetariano', e: '🥦', ex: 'Do you have vegetarian options?', exEs: '¿Tienen opciones vegetarianas?' },
+    { t: 'vegetarian', es: 'vegetariano', e: '🥦', pic: false, ex: 'Do you have vegetarian options?', exEs: '¿Tienen opciones vegetarianas?' },
     { t: 'spicy', es: 'picante', e: '🌶️', ex: 'This sauce is too spicy.', exEs: 'Esta salsa es demasiado picante.' },
-    { t: 'allergic', es: 'alérgico', e: '🤧', ex: 'I am allergic to nuts.', exEs: 'Soy alérgico a las nueces.' },
+    { t: 'allergic', es: 'alérgico', e: '🤧', pic: false, ex: 'I am allergic to nuts.', exEs: 'Soy alérgico a las nueces.' },
     { t: 'steak', es: 'bife', e: '🥩', ex: 'I like my steak medium.', exEs: 'Me gusta el bife a punto.' },
   ],
   phrases: [

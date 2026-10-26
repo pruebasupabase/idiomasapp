@@ -8,18 +8,18 @@ export default {
   words: [
     { t: 'email', es: 'correo electrónico', e: '📧', ex: 'I sent you an email.', exEs: 'Te mandé un mail.' },
     { t: 'attachment', es: 'archivo adjunto', e: '📎', ex: 'See the attachment.', exEs: 'Mirá el archivo adjunto.' },
-    { t: 'subject', es: 'asunto', e: '📌', ex: 'Write a clear subject.', exEs: 'Escribí un asunto claro.' },
-    { t: 'reply', es: 'responder', e: '↩️', ex: 'I will reply tomorrow.', exEs: 'Voy a responder mañana.' },
+    { t: 'subject', es: 'asunto', e: '📌', pic: false, ex: 'Write a clear subject.', exEs: 'Escribí un asunto claro.' },
+    { t: 'reply', es: 'responder', e: '↩️', pic: false, ex: 'I will reply tomorrow.', exEs: 'Voy a responder mañana.' },
 
-    { t: 'forward', es: 'reenviar', e: '➡️', ex: 'Please forward the email to me.', exEs: 'Por favor, reenviame el mail.' },
-    { t: 'schedule', es: 'agendar', e: '🗓️', ex: 'Let us schedule a call.', exEs: 'Agendemos una llamada.' },
-    { t: 'voicemail', es: 'mensaje de voz', e: '📼', ex: 'I left a voicemail.', exEs: 'Dejé un mensaje de voz.' },
+    { t: 'forward', es: 'reenviar', e: '➡️', pic: false, ex: 'Please forward the email to me.', exEs: 'Por favor, reenviame el mail.' },
+    { t: 'schedule', es: 'agendar', e: '🗓️', pic: false, ex: 'Let us schedule a call.', exEs: 'Agendemos una llamada.' },
+    { t: 'voicemail', es: 'mensaje de voz', e: '📼', pic: false, ex: 'I left a voicemail.', exEs: 'Dejé un mensaje de voz.' },
     { t: 'invoice', es: 'factura', e: '🧾', ex: 'I will send the invoice today.', exEs: 'Hoy mando la factura.' },
 
     { t: 'reminder', es: 'recordatorio', e: '🔔', ex: 'This is a friendly reminder.', exEs: 'Este es un recordatorio amistoso.' },
-    { t: 'available', es: 'disponible', e: '✅', ex: 'Are you available on Monday?', exEs: '¿Estás disponible el lunes?' },
+    { t: 'available', es: 'disponible', e: '✅', pic: false, ex: 'Are you available on Monday?', exEs: '¿Estás disponible el lunes?' },
     { t: 'urgent', es: 'urgente', e: '🚨', ex: 'This is urgent.', exEs: 'Esto es urgente.' },
-    { t: 'follow up', es: 'dar seguimiento', e: '🔁', ex: 'I am writing to follow up.', exEs: 'Escribo para dar seguimiento.' },
+    { t: 'follow up', es: 'dar seguimiento', e: '🔁', pic: false, ex: 'I am writing to follow up.', exEs: 'Escribo para dar seguimiento.' },
   ],
   phrases: [
     { t: 'Please find the attachment.', es: 'Adjunto el archivo.' },
